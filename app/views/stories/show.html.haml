@@ -1,0 +1,10 @@
+%p#notice= notice
+
+%h1= @story.name
+
+%ul
+  - @story.pages.each do |page|
+    %li
+      = render page
+
+= link_to 'Back', stories_path

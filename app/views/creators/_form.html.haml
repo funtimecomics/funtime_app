@@ -1,0 +1,19 @@
+= form_for @creator do |f|
+  - if @creator.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@creator.errors.count, "error")} prohibited this creator from being saved:"
+      %ul
+        - @creator.errors.full_messages.each do |msg|
+          %li= msg
+
+  .field
+    = f.label :name
+    = f.text_field :name
+  .field
+    = f.label :image
+    = f.text_field :image
+  .field
+    = f.label :bio
+    = f.text_field :bio
+  .actions
+    = f.submit 'Save'
