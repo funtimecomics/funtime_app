@@ -1,0 +1,16 @@
+%p#notice= notice
+
+%p
+  %b Name:
+  = @person.name
+%p
+  %b Image:
+  = image_tag @person.image.url(:thumb)
+%p
+  %b Bio:
+  = @person.bio
+
+= link_to 'Back', people_path
+
+%h3 Stories
+= render partial: "stories/stories", object: @person.stories

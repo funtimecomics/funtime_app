@@ -1,7 +1,19 @@
 ActiveAdmin.register Page do
+  index do
+    column :page do |page|
+      page.story.name + " " + page.position.to_s
+    end
+    column :image do |page|
+      image_tag( page.image.url(:thumb) ) + page.image_file_name
+    end
+    default_actions
+  end
+
   form :html => { :enctype => "multipart/form-data" } do |f|
     f.inputs "Page", :multipart => true do
       f.input :image
+      f.input :position
+      f.input :story
     end
     f.buttons
   end
@@ -9,6 +21,9 @@ ActiveAdmin.register Page do
   show do |page|
     attributes_table do
       row :id
+      row :story do
+        page.story.name if page.story
+      end
       row :created_at
       row :image_file_name
       row :image_content_type

@@ -1,14 +1,4 @@
-%h1 Listing stories
+%h1 Stories
 
-%table
-  %tr
-    %th Name
-    %th
-    %th
-    %th
-
-  - @stories.each do |story|
-    %tr
-      %td= story.name
-      %td= link_to 'Show', story
+= render partial: "stories/stories", object: @stories
 

@@ -2,11 +2,12 @@ class SiteController < InheritedResources::Base
   # GET /pages
   # GET /pages.json
   def index
-    @pages = Page.all
+    @stories = Story.all
+    @people = Person.all
 
     respond_to do |format|
       format.html # index.html.erb
-      format.json { render json: @pages }
+      format.json { render json: @stories }
     end
   end
 end

@@ -7,7 +7,7 @@ class CreatePeople < ActiveRecord::Migration
       t.timestamps
     end
 
-    create_table :stories_people do |t|
+    create_table :people_stories do |t|
       t.belongs_to :story
       t.belongs_to :person
     end
