@@ -14,6 +14,7 @@ class StoriesController < InheritedResources::Base
   # GET /stories/1.json
   def show
     @story = Story.find(params[:id])
+    @people = @story.people
 
     respond_to do |format|
       format.html # show.html.erb

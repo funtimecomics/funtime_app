@@ -55,6 +55,7 @@ GEM
       sass (>= 3.2.0)
       thor
     builder (3.0.4)
+    chunky_png (1.2.9)
     climate_control (0.0.3)
       activesupport (>= 3.0)
     cocaine (0.5.1)
@@ -67,6 +68,12 @@ GEM
       coffee-script-source
       execjs
     coffee-script-source (1.6.2)
+    compass (0.12.2)
+      chunky_png (~> 1.2)
+      fssm (>= 0.2.7)
+      sass (~> 3.1)
+    compass-rails (1.0.3)
+      compass (>= 0.12.2, < 0.14)
     devise (2.2.4)
       bcrypt-ruby (~> 3.0)
       orm_adapter (~> 0.1)
@@ -78,6 +85,7 @@ GEM
     fastercsv (1.5.5)
     formtastic (2.2.1)
       actionpack (>= 3.0)
+    fssm (0.2.10)
     haml (4.0.3)
       tilt
     haml-rails (0.4)
@@ -199,6 +207,7 @@ DEPENDENCIES
   acts_as_list
   aws-sdk (~> 1.5.7)
   coffee-rails (~> 3.2.1)
+  compass-rails
   haml-rails
   jquery-rails (~> 2.3.0)
   meta_search (>= 1.1.0.pre)

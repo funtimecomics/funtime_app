@@ -1,16 +1,18 @@
 ---
+logo.png: logo-3853c2fc38dcd3994757ef336dddf544.png
+logo/index.png: logo-3853c2fc38dcd3994757ef336dddf544.png
 rails.png: rails-a3386665c05a2d82f711a4aaa72d247c.png
 rails/index.png: rails-a3386665c05a2d82f711a4aaa72d247c.png
 title.png: title-788147bfe0cdeb175843a3d2a8421043.png
 title/index.png: title-788147bfe0cdeb175843a3d2a8421043.png
 active_admin.js: active_admin-da1bfe85a1d3d3bee66acfbb6e4e19ea.js
 active_admin/index.js: active_admin-da1bfe85a1d3d3bee66acfbb6e4e19ea.js
-application.js: application-9d1c20da22f5b84c02a6a0d80754f7e3.js
-application/index.js: application-9d1c20da22f5b84c02a6a0d80754f7e3.js
+application.js: application-6b3cdee7e49c4c525f7cc8c27c5479dd.js
+application/index.js: application-6b3cdee7e49c4c525f7cc8c27c5479dd.js
 active_admin.css: active_admin-f6eab3903eabe26e294bb5e070593cb6.css
 active_admin/index.css: active_admin-f6eab3903eabe26e294bb5e070593cb6.css
-application.css: application-8d697aed6df62c6f6b81e24a2ad6f79d.css
-application/index.css: application-8d697aed6df62c6f6b81e24a2ad6f79d.css
+application.css: application-1b66f047f5ed0230b2c502883da79fba.css
+application/index.css: application-1b66f047f5ed0230b2c502883da79fba.css
 active_admin/admin_notes_icon.png: active_admin/admin_notes_icon-25b05cd8197f7a271d0624853a6dbdd5.png
 active_admin/admin_notes_icon/index.png: active_admin/admin_notes_icon-25b05cd8197f7a271d0624853a6dbdd5.png
 active_admin/datepicker/datepicker-header-bg.png: active_admin/datepicker/datepicker-header-bg-6f0baad739953cb1a0413c031841e82f.png

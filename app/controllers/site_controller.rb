@@ -10,4 +10,14 @@ class SiteController < InheritedResources::Base
       format.json { render json: @stories }
     end
   end
+
+  def publications
+  end
+
+  def workshops
+  end
+
+  def contact
+  end
+
 end

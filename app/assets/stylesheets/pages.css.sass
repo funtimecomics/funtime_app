@@ -1,6 +1,29 @@
-// Place all the styles related to the pages controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+@import "compass"
+
+.pages
+  clear: both
+  float: left
+  margin-bottom: 2em
+  .page
+    float: left
+    list-style: none
+    margin-right: 1em
+    position: relative
+    a
+      cursor: pointer
+    .page-number
+      position: absolute
+      right: -0.5em
+      bottom: -0.5em
+      @include border-radius(1em)
+      background: black
+      color: white
+      text-align: center
+      width: 2em
+      height: 2em
+      border: solid 2px white
+      line-height: 1.6
+
 
 #carousel-pages
   .item
@@ -8,3 +31,4 @@
     img
       margin: 0 auto
       width: 100%
+

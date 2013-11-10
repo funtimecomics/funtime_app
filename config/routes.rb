@@ -5,6 +5,10 @@ FuntimeApp::Application.routes.draw do
   resources :stories, only: [:index, :show]
   resources :pages, only: [:show]
 
+  match 'publications' => 'site#publications'
+  match 'workshops' => 'site#workshops'
+  match 'contact' => 'site#contact'
+
   root to: 'site#index'
 
   ActiveAdmin.routes(self)

@@ -1,23 +1,41 @@
-.row
-  .col-md-12
-    %p#notice= notice
-    %h1= @story.name
-.row
-  .col-md-12
-    #carousel-pages.carousel.slide
-      / Indicators
-      %ol.carousel-indicators
-        - @story.pages.each_with_index do |page, i|
-          %li{:class => ("active" if i==0), "data-slide-to" => i, "data-target" => "#carousel-pages"}
-            = image_tag page.image.url(:thumb)
+%header.section
+  .container
+    .row.story-meta
+      .col-md-12
+        %p#notice= notice
+        = render partial: "people/people", object: @people
+        %h1= @story.name
 
-      / Wrapper for slides
-      .carousel-inner
-        - @story.pages.each_with_index do |page, i|
-          .item{:class => ("active" if i==0)}
-            = image_tag page.image.url(:original), class: "img-responsive"
-      / Controls
-      %a.left.carousel-control{"data-slide" => "prev", :href => "#carousel-pages"}
-        %span.icon-prev
-      %a.right.carousel-control{"data-slide" => "next", :href => "#carousel-pages"}
-        %span.icon-next
+.section#pages
+  .container
+    .row
+      .col-md-12
+        / Indicators
+        %ol.pages
+          - @story.pages.each_with_index do |page, i|
+            %li.page{class: ("active" if i==0), "data-slide-to" => i, "data-target" => "#carousel-pages"}
+              %a
+                = image_tag page.image.url(:thumb)
+                .page-number
+                  = i+1
+.section
+  .container
+    .row
+      .col-md-1
+        %button.btn#carousel-prev
+          %span.icon-prev
+      .col-md-10
+        #carousel-pages.carousel.slide
+          / Wrapper for slides
+          .carousel-inner
+            - @story.pages.each_with_index do |page, i|
+              .item{:class => ("active" if i==0)}
+                = image_tag page.image.url(:original), class: "img-responsive"
+          / Controls
+          %a.left.carousel-control{"data-slide" => "prev", :href => "#carousel-pages"}
+            %span.icon-prev
+          %a.right.carousel-control{"data-slide" => "next", :href => "#carousel-pages"}
+            %span.icon-next
+      .col-md-1
+        %button.btn#carousel-next
+          %span.icon-next

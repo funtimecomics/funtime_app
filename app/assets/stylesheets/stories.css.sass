@@ -1,0 +1,36 @@
+@import "compass"
+
+.story-meta
+  .people
+    float: right
+
+.carousel-control
+  width: 50%
+  .icon-prev,
+  .icon-next
+    display: none
+  .icon-prev
+    left: 1em
+    right: auto
+  .icon-next
+    left: auto
+    right: 1em
+  &:hover
+    .icon-prev,
+    .icon-next
+      display: block
+      background: black
+      color: white
+      @include border-radius(50%)
+      border: solid 2px white
+
+
+.carousel-control.left
+  background: none
+  &:hover
+    @include background(linear-gradient(left, rgba(0,0,0,0.5), rgba(0,0,0,0.0001)))
+
+.carousel-control.right
+  background: none
+  &:hover
+    @include background(linear-gradient(left, rgba(0,0,0,0.0001), rgba(0,0,0,0.5)))

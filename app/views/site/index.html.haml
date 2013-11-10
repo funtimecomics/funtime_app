@@ -1,28 +1,37 @@
-.jumbotron
+%header.section
   .container
-    %h1
-      = image_tag "title.png"
-      Funtime Comics
+    .jumbotron
+      %h1
+        Funtime Comics 2.0
+      %h2
+        Voyage into the Cyberweb
 
-.container
-  .row
-    %h3 Stories
-    = render partial: "stories/stories", :object => @stories
-    .stories-all.col-md-1
-      = link_to "See All Stories", stories_path
-  .row
-    %h3 People
-    = render partial: "people/people", :object => @people
-    .people-all.col-md-1
-      = link_to "See All People", people_path
-  .row
-    .col-md-4
-      %h3 Get in touch
-      = link_to "http://www.facebook.com/groups/funtimecomics" do
-        Facebook page
-    .col-md-4
-      %h3 Workshops
-      %p
-        On the second Saturday of each month comic artists meet for quality drawing time in the company of their fellows. Some people bring their own work in progress, others just paper and pens. We have a long tradition of jam comics and other collaborative work, so even if you don't have an idea ready to work on, we can usually provide a half-finished story you can contribute to.
-    .col-md-4
-      %h3 Publications
+.section.stories
+  .container
+    .row
+      .col-md-2
+        %h2 Stories
+        = link_to "See All Stories", stories_path
+      = render partial: "stories/stories", :object => @stories
+
+.section.people
+  .container
+    .row
+      .col-md-2
+        %h2 People
+        = link_to "See All People", people_path
+      = render partial: "people/people", :object => @people
+
+%footer.section.about
+  .container
+    .row
+      .col-md-4
+        %h3 Get in touch
+        = link_to "http://www.facebook.com/groups/funtimecomics" do
+          Facebook page
+      .col-md-4
+        %h3 Workshops
+        %p
+          On the second Saturday of each month comic artists meet for quality drawing time in the company of their fellows. Some people bring their own work in progress, others just paper and pens. We have a long tradition of jam comics and other collaborative work, so even if you don't have an idea ready to work on, we can usually provide a half-finished story you can contribute to.
+      .col-md-4
+        %h3 Publications
