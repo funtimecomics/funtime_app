@@ -73,5 +73,4 @@ FuntimeApp::Application.configure do
       :secret_access_key => ENV['AWS_SECRET_ACCESS_KEY']
     }
   }
-  AWS.config(:region => 'ap-southeast-2')
 end
