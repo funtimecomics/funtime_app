@@ -1,29 +1,28 @@
-%header.section
-  .container
-    .row.story-meta
-      .col-md-12
-        %p#notice= notice
-        = render partial: "people/people", object: @people
-        %h1= @story.name
-
-.section#pages
+%header
   .container
     .row
       .col-md-12
-        / Indicators
-        %ol.pages
-          - @story.pages.each_with_index do |page, i|
-            %li.page{class: ("active" if i==0), "data-slide-to" => i, "data-target" => "#carousel-pages"}
-              %a
-                = image_tag page.image.url(:thumb)
-                .page-number
-                  = i+1
+        %h1= @story.name
+
 .section
   .container
     .row
-      .col-md-1
-        %button.btn#carousel-prev
-          %span.icon-prev
+      .col-md-2
+        .row
+          .col-md-12
+            = render partial: "pages/pages", object: @story.pages
+        .row.creators
+          .col-md-12
+            %h2 Creators
+            .people
+              %ul.people
+                - @people.each do |person|
+                  %li.person
+                    = link_to person do
+                      .person-image.thumb
+                        = image_tag person.image.url(:thumb)
+                      = person.name
+
       .col-md-10
         #carousel-pages.carousel.slide
           / Wrapper for slides
@@ -36,6 +35,3 @@
             %span.icon-prev
           %a.right.carousel-control{"data-slide" => "next", :href => "#carousel-pages"}
             %span.icon-next
-      .col-md-1
-        %button.btn#carousel-next
-          %span.icon-next

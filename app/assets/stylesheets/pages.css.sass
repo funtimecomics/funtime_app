@@ -3,14 +3,18 @@
 .pages
   clear: both
   float: left
-  margin-bottom: 2em
+  padding: 0
   .page
     float: left
     list-style: none
-    margin-right: 1em
+    margin: 0 1em 1em 0
     position: relative
     a
       cursor: pointer
+    &.active
+      .page-number
+        color: #e6e546
+        border-color: #e6e546        
     .page-number
       position: absolute
       right: -0.5em

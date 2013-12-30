@@ -1,2 +1,5 @@
-= link_to page do
-  = image_tag page.image.url(:thumb)
+%li.page{class: ("active" if page_counter==0), "data-slide-to" => page_counter, "data-target" => "#carousel-pages"}
+  %a
+    = image_tag page.image.url(:thumb)
+    .page-number
+      = page_counter+1

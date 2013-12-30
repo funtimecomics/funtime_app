@@ -1,4 +1,5 @@
-%li.story.col-md-1
+%li.story.col-md-2
   = link_to story do
-    = image_tag story.image.url(:thumb)
+    .thumbnail
+      = image_tag story.cover_image.url(:thumb)
     = story.name

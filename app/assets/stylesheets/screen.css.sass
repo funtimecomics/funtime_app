@@ -1,11 +1,12 @@
 /* Welcome to Compass.
  * In this file you should write your main styles. (or centralize your imports)
  * Import this file using the following HTML or equivalent:
- * <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css" /> */
+ * <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css" /> 
+ */
 
 @import "compass"
 @import "compass/css3"
-/* @import "compass/reset"
+// @import "compass/reset"
 
 $default-border-radius: 5px
 $colour-link-normal: #1e7944
@@ -17,6 +18,9 @@ a
   +link-colors($colour-link-normal, $colour-link-hover, $colour-link-active, $colour-link-visited, $colour-link-focus)
   &:hover
     background: transparent
+
+ul
+  padding: 0
 
 .section
   padding: 2em 0
@@ -35,3 +39,74 @@ a
     .logo
       margin-top: -85px
 
+header
+  margin-top: -190px
+  margin-bottom: 2em
+  min-height: 170px
+  max-height: 500px
+  overflow: hidden
+  h1
+    text-align: center
+    margin: 130px 0 0 0
+    line-height: 1
+  .header_image
+    img
+      width: 100%
+
+.person
+  text-align: center
+  float: left
+  a
+    width: 100%
+.person-image
+  margin: 0 auto
+  @include border-radius(50%)
+  background: white
+  border: solid 4px #dddddd
+  max-width: none
+  overflow: hidden
+  padding: 0
+  &.thumb
+    width: 100px
+    height: 100px
+  &.original
+    width: 300px
+    height: 300px
+
+.row.creators
+  text-align: center
+  .people
+    padding: 0
+    .person
+      min-width: 165px
+      margin-bottom: 1em
+            
+.carousel-control
+  width: 50%
+  .icon-prev,
+  .icon-next
+    display: none
+  .icon-prev
+    left: 1em
+    right: auto
+  .icon-next
+    left: auto
+    right: 1em
+  &:hover
+    .icon-prev,
+    .icon-next
+      display: block
+      background: black
+      color: white
+      @include border-radius(50%)
+      border: solid 2px white
+
+.carousel-control.left
+  background: none
+  &:hover
+    @include background(linear-gradient(left, rgba(0,0,0,0.5), rgba(0,0,0,0.0001)))
+
+.carousel-control.right
+  background: none
+  &:hover
+    @include background(linear-gradient(left, rgba(0,0,0,0.0001), rgba(0,0,0,0.5)))
