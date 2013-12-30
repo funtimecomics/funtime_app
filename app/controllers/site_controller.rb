@@ -17,7 +17,7 @@ class SiteController < InheritedResources::Base
   def workshops
   end
 
-  def contact
+  def submissions
   end
 
 end

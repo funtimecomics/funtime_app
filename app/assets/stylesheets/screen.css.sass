@@ -14,6 +14,7 @@ $colour-link-hover: #1e7944
 $colour-link-active: #1e7944
 $colour-link-visited: #1e7944
 $colour-link-focus: #1e7944
+$colour-highlight: #e6e546
 a
   +link-colors($colour-link-normal, $colour-link-hover, $colour-link-active, $colour-link-visited, $colour-link-focus)
   &:hover
@@ -21,6 +22,8 @@ a
 
 ul
   padding: 0
+  ul
+    margin-left: 2em
 
 .section
   padding: 2em 0
@@ -31,27 +34,46 @@ ul
   @include border-radius(0)
   border: none
   background: black
-  margin: 70px 0 70px 0
+  margin: 80px 0 70px 0
+  font-family: 'Mouse Memoirs', sans-serif
+  font-size: 24px
+  line-height: 1
+  letter-spacing: 1px
   .navbar-nav>.active>a
-    background: #222222
+    color: $colour-highlight
+    &:hover
+      color: $colour-highlight
   .navbar-brand
     height: 0
     .logo
       margin-top: -85px
 
 header
-  margin-top: -190px
+  margin-top: -200px
   margin-bottom: 2em
   min-height: 170px
   max-height: 500px
   overflow: hidden
   h1
     text-align: center
-    margin: 130px 0 0 0
+    margin: 150px 0 0 0
     line-height: 1
   .header_image
     img
       width: 100%
+
+footer
+  margin-top: 2em
+  background: black
+  color: white
+  h1, h2, h3
+    color: #ebe239
+
+.photo_group
+  img
+    width: 360px
+    max-width: 100%
+    float: left
 
 .person
   text-align: center
@@ -110,3 +132,6 @@ header
   background: none
   &:hover
     @include background(linear-gradient(left, rgba(0,0,0,0.0001), rgba(0,0,0,0.5)))
+
+.adr
+  padding-left: 1em

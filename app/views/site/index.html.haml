@@ -9,7 +9,7 @@
       .col-md-2
         %h2 Stories
         = link_to "See All Stories", stories_path
-      = render partial: "stories/stories", :object => @stories
+      = render partial: "stories/stories", object: @stories
 
 .section.people
   .container
@@ -17,18 +17,36 @@
       .col-md-2
         %h2 People
         = link_to "See All People", people_path
-      = render partial: "people/people", :object => @people
+      = render partial: "people/people", object: @people
 
 %footer.section.about
   .container
     .row
       .col-md-4
         %h3 Get in touch
-        = link_to "http://www.facebook.com/groups/funtimecomics" do
-          Facebook page
+        %p
+          The easiest place to find us is our
+          = link_to "http://www.facebook.com/groups/funtimecomics", "Facebook page"
+        .adr
+          %p.street-address
+            10 Ashmole Street
+          %p
+            %span.locality
+              Woolston, Christchurch
+            %span.postal-code
+              8023
+          %p.country-name
+            New Zealand
+        %p
+          = mail_to "funtime@comics.org.nz", "funtime@comics.org.nz", encode: "javascript", class: "email"
+
       .col-md-4
         %h3 Workshops
         %p
-          On the second Saturday of each month comic artists meet for quality drawing time in the company of their fellows. Some people bring their own work in progress, others just paper and pens. We have a long tradition of jam comics and other collaborative work, so even if you don't have an idea ready to work on, we can usually provide a half-finished story you can contribute to.
+          Funtime Comics gathers monthly for an afternoon of quality drawing time, tea-drinking and chat. We'd love to meet you, whether you're a longtime comics artist or a complete beginner.
+        = link_to "More about Workshops", workshops_path, class: "link-cta"
       .col-md-4
-        %h3 Publications
+        %h3 Submissions
+        %p
+          We take submissions from all over the place, and we put them right here on the website.
+        = link_to "More about Subissions", submissions_path, class: "link-cta"

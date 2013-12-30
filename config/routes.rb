@@ -3,11 +3,10 @@ FuntimeApp::Application.routes.draw do
 
   resources :people
   resources :stories, only: [:index, :show]
-  # resources :pages, only: [:show]
 
-  match 'publications' => 'site#publications'
+  # match 'publications' => 'site#publications'
   match 'workshops' => 'site#workshops'
-  match 'contact' => 'site#contact'
+  match 'submissions' => 'site#submissions'
 
   root to: 'site#index'
 
