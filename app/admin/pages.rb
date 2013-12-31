@@ -35,4 +35,10 @@ ActiveAdmin.register Page do
     end
     active_admin_comments
   end
+
+  # Add New Page button to show page, for quick editing
+  action_item only: [:show] do
+    link_to "New Page", new_admin_page_path
+  end
+
 end

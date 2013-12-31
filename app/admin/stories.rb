@@ -53,4 +53,10 @@ ActiveAdmin.register Story do
     end
     active_admin_comments
   end
+
+  # Add New Story button to show page, for quick editing
+  action_item only: [:show] do
+    link_to "New Story", new_admin_story_path
+  end
+
 end

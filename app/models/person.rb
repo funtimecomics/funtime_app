@@ -4,4 +4,6 @@ class Person < ActiveRecord::Base
   has_and_belongs_to_many :stories
 
   scope :alphabetically, order("name ASC")
+  scope :recent, ->(num) { order('created_at DESC').limit(num) }
+
 end

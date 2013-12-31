@@ -3,4 +3,6 @@ class Story < ActiveRecord::Base
   has_attached_file :cover_image, :styles => { :medium => "300x300>", :thumb => "100x100>" }, :default_url => "/default_images/story/:style/default.png"
   has_many :pages
   has_and_belongs_to_many :people
+
+  scope :recent, ->(num) { order('created_at DESC').limit(num) }
 end

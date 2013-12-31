@@ -22,4 +22,9 @@ ActiveAdmin.register Person do
     end
     active_admin_comments
   end
+
+  # Add New Person button to show page, for quick editing
+  action_item only: [:show] do
+    link_to "New Person", new_admin_person_path
+  end
 end
