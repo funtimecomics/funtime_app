@@ -11,9 +11,9 @@ ActiveAdmin.register Page do
 
   form :html => { :enctype => "multipart/form-data" } do |f|
     f.inputs "Page", :multipart => true do
-      f.input :image
-      f.input :position
       f.input :story
+      f.input :position
+      f.input :image
     end
     f.buttons
   end
