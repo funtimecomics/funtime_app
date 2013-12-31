@@ -4,12 +4,15 @@ ActiveAdmin.register Story do
       story.name
     end
     column :cover_image do |story|
-      image_tag( story.cover_image.url(:thumb) ) + story.cover_image_file_name
+      image_tag( story.cover_image.url(:thumb) )
     end
     column :people do |story|
-      story.people.map do |person|
-        image_tag( person.image.url(:thumb) ) + person.name
+      story.people.alphabetically.map do |person|
+        link_to person.name, edit_admin_person_path(person.id)
       end.join(" ").html_safe
+    end
+    column :pages do |story|
+      story.pages.count
     end
     default_actions
   end
@@ -18,7 +21,7 @@ ActiveAdmin.register Story do
     f.inputs "Story" do
       f.input :name
       f.input :cover_image
-      f.input :people
+      f.input :people, as: :select, collection: Person.alphabetically
     end
 
     f.buttons
@@ -36,7 +39,7 @@ ActiveAdmin.register Story do
         image_tag story.cover_image.url(:thumb)
       end
       row :people do
-        story.people.map do |p|
+        story.people.alphabetically.map do |p|
           link_to p.name, admin_page_path(p)
         end.join(" ").html_safe
       end
