@@ -9,7 +9,8 @@
       .col-md-2
         %h2 Stories
         = link_to "See All Stories", stories_path
-      = render partial: "stories/stories", object: @stories
+      .col-md-10
+        = render partial: "stories/stories", object: @stories
 
 .section.people
   .container
@@ -17,7 +18,8 @@
       .col-md-2
         %h2 People
         = link_to "See All People", people_path
-      = render partial: "people/people", object: @people
+      .col-md-10
+        = render partial: "people/people", object: @people
 
 %footer.section.about
   .container

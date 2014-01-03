@@ -84,6 +84,8 @@ GEM
     execjs (2.0.2)
     formtastic (2.2.1)
       actionpack (>= 3.0)
+    friendly_id (4.0.10.1)
+      activerecord (>= 3.0, < 4.0)
     fssm (0.2.10)
     haml (4.0.4)
       tilt
@@ -209,6 +211,7 @@ DEPENDENCIES
   aws-sdk (~> 1.5.7)
   coffee-rails (~> 3.2.1)
   compass-rails
+  friendly_id
   haml-rails
   jquery-rails (~> 2.3.0)
   meta_search (>= 1.1.0.pre)

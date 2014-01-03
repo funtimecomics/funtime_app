@@ -29,8 +29,8 @@ ActiveAdmin.register Story do
 
   show do |story|
     attributes_table do
-      row :id
-      row :created_at
+      # row :id
+      # row :created_at
       row :cover_image_file_name
       row :cover_image_content_type
       row :cover_image_file_size

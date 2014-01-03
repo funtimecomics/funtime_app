@@ -10,8 +10,8 @@ ActiveAdmin.register Person do
 
   show do |person|
     attributes_table do
-      row :id
-      row :created_at
+      # row :id
+      # row :created_at
       row :image_file_name
       row :image_content_type
       row :image_file_size

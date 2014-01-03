@@ -20,11 +20,11 @@ ActiveAdmin.register Page do
 
   show do |page|
     attributes_table do
-      row :id
+      # row :id
       row :story do
         page.story.name if page.story
       end
-      row :created_at
+      # row :created_at
       row :image_file_name
       row :image_content_type
       row :image_file_size
