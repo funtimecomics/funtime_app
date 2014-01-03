@@ -15,10 +15,10 @@
 .section.people
   .container
     .row
-      .col-md-2
+      .col-md-2.col-sm-12
         %h2 People
         = link_to "See All People", people_path
-      .col-md-10
+      .col-md-10.col-sm-12
         = render partial: "people/people", object: @people
 
 %footer.section.about
