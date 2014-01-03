@@ -7,6 +7,7 @@ class Story < ActiveRecord::Base
   has_many :pages
   has_and_belongs_to_many :people
 
+  scope :alphabetically, order("name ASC")
   scope :recent, ->(num) { order('created_at DESC').limit(num) }
 
   validates_uniqueness_of :name

@@ -1,15 +1,18 @@
 ActiveAdmin.register Story do
   index do
+    selectable_column
     column :story do |story|
-      story.name
+      content_tag :h3, story.name
     end
     column :cover_image do |story|
       image_tag( story.cover_image.url(:thumb) )
     end
     column :people do |story|
-      story.people.alphabetically.map do |person|
-        link_to person.name, edit_admin_person_path(person.id)
-      end.join(" ").html_safe
+      content_tag :ul do
+        content_tag_for :li, story.people.alphabetically do |person|
+          link_to person.name, edit_admin_person_path(person.id)
+        end
+      end
     end
     column :pages do |story|
       story.pages.count

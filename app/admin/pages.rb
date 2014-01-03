@@ -1,7 +1,8 @@
 ActiveAdmin.register Page do
   index do
+    selectable_column
     column :page do |page|
-      page.story.name + " " + page.position.to_s
+      "<h3>#{page.story.name}</h3> Page #{page.position.to_s}".html_safe
     end
     column :image do |page|
       image_tag( page.image.url(:thumb) ) + page.image_file_name

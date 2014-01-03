@@ -1,4 +1,22 @@
 ActiveAdmin.register Person do
+  index do
+    selectable_column
+    column :person do |person|
+      "<h3>#{person.name}</h3> #{person.slug}".html_safe
+    end
+    column :image do |person|
+      image_tag( person.image.url(:thumb) ) + person.image_file_name
+    end
+    column :stories do |person|
+      content_tag :ul do
+        content_tag_for :li, person.stories.alphabetically do |story|
+          link_to story.name, edit_admin_story_path(story.id)
+        end
+      end
+    end
+    default_actions
+  end
+
   form :html => { :enctype => "multipart/form-data" } do |f|
     f.inputs "Person", :multipart => true do
       f.input :name
