@@ -1,5 +1,5 @@
-%li.story.col-md-2
+%li.story.col-md-2.col-sm-3.col-xs-6
   = link_to story do
     .thumbnail
       = image_tag story.cover_image.url(:thumb)
-    = story.name
+    = truncate(story.name, length: 30)

@@ -1,5 +1,5 @@
-%li.person.col-md-2
+%li.person.col-md-2.col-sm-3.col-xs-6
   = link_to person do
     .person-image.thumb
       = image_tag person.image.url(:thumb)
-    = person.name
+    = truncate(person.name, length: 30)
