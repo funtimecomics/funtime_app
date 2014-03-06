@@ -11,13 +11,13 @@ class SiteController < InheritedResources::Base
     end
   end
 
-  def publications
-  end
+  # def publications
+  # end
 
-  def workshops
-  end
+  # def workshops
+  # end
 
-  def submissions
-  end
+  # def submissions
+  # end
 
 end

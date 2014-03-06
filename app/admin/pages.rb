@@ -2,7 +2,7 @@ ActiveAdmin.register Page do
   index do
     selectable_column
     column :page do |page|
-      "<h3>#{page.story.name}</h3> Page #{page.position.to_s}".html_safe
+      "<h3>#{page.story_name}</h3> Page #{page.position.to_s}".html_safe
     end
     column :image do |page|
       image_tag( page.image.url(:thumb) ) + page.image_file_name
@@ -23,7 +23,7 @@ ActiveAdmin.register Page do
     attributes_table do
       # row :id
       row :story do
-        page.story.name if page.story
+        page.story_name if page.story
       end
       # row :created_at
       row :image_file_name
@@ -34,7 +34,7 @@ ActiveAdmin.register Page do
         image_tag page.image.url(:thumb)
       end
     end
-    active_admin_comments
+    # active_admin_comments
   end
 
   # Add New Page button to show page, for quick editing
@@ -42,4 +42,17 @@ ActiveAdmin.register Page do
     link_to "New Page", new_admin_page_path
   end
 
+  # Return to index after create, update
+  controller do
+    def create
+      create! do |format|
+        format.html { redirect_to admin_pages_url }
+      end
+    end
+    def update
+      update! do |format|
+        format.html { redirect_to admin_pages_url }
+      end
+    end
+  end
 end

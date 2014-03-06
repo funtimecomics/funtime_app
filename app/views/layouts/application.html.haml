@@ -40,8 +40,8 @@
             = nav_link "Home", root_path
             = nav_link "Stories", stories_path
             = nav_link "People", people_path
-            = nav_link "Workshops", workshops_path
-            = nav_link "Submissions", submissions_path
+            = nav_link "Workshops", "/workshops"
+            = nav_link "Submissions", "/submissions"
 
     .container
       - flash.each do |name, msg|

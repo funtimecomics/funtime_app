@@ -38,11 +38,25 @@ ActiveAdmin.register Person do
         image_tag person.image.url(:thumb)
       end
     end
-    active_admin_comments
+    # active_admin_comments
   end
 
   # Add New Person button to show page, for quick editing
   action_item only: [:show] do
     link_to "New Person", new_admin_person_path
+  end
+
+  # Return to index after create, update
+  controller do
+    def create
+      create! do |format|
+        format.html { redirect_to admin_people_url }
+      end
+    end
+    def update
+      update! do |format|
+        format.html { redirect_to admin_people_url }
+      end
+    end
   end
 end

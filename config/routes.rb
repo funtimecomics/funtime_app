@@ -4,10 +4,6 @@ FuntimeApp::Application.routes.draw do
   resources :people
   resources :stories, only: [:index, :show]
 
-  # match 'publications' => 'site#publications'
-  match 'workshops' => 'site#workshops'
-  match 'submissions' => 'site#submissions'
-
   root to: 'site#index'
 
   ActiveAdmin.routes(self)
@@ -65,4 +61,8 @@ FuntimeApp::Application.routes.draw do
   # This is a legacy wild controller route that's not recommended for RESTful applications.
   # Note: This route will make all actions in every controller accessible via GET requests.
   # match ':controller(/:action(/:id))(.:format)'
+
+  # If all else fails, check for static pages
+  match ':action' => 'static#:action'
+
 end

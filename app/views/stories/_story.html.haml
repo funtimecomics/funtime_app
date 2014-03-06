@@ -3,3 +3,12 @@
     .thumbnail
       = image_tag story.cover_image.url(:thumb)
     = truncate(story.name, length: 30)
+
+  - if person
+    - coauthors = story.people.delete_if{|p| p ==person}
+    - if coauthors.count < 3
+      (with
+      = coauthors.map{|coauthor| link_to coauthor.name, people_path(coauthor)}.join(", ").html_safe
+      )
+    - else
+      (with others)

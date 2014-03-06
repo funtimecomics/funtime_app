@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
-ruby "2.0.0"
+ruby "2.1.1"
 
-gem 'rails', '3.2.16'
+gem 'rails', '3.2.17'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
@@ -23,6 +23,20 @@ end
 
 group :development do
   gem 'pry-rails'
+  gem 'rails_best_practices'
+end
+
+group :development, :test do
+  gem 'rspec-rails'
+  gem 'factory_girl_rails', "~> 4.0"
+end
+group :test do
+  gem 'faker'
+  # gem 'capybara'
+  # gem 'guard-rspec'
+  # gem 'launchy'
+  gem 'simplecov', :require => false
+  gem 'database_cleaner'
 end
 
 gem 'jquery-rails', '~> 2.3.0'

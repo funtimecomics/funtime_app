@@ -17,4 +17,6 @@
   .row
     .col-md-12
       %h3 Stories
-      = render partial: "stories/stories", object: @person.stories
+      = render partial: "stories/stories", object: @person.stories, person: @person
+
+= render partial: "site/footer"

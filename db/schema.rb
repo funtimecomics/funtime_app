@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140103021749) do
+ActiveRecord::Schema.define(:version => 20140306045819) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -74,6 +74,8 @@ ActiveRecord::Schema.define(:version => 20140103021749) do
     t.integer  "position"
   end
 
+  add_index "pages", ["story_id"], :name => "index_pages_on_story_id"
+
   create_table "people", :force => true do |t|
     t.string   "name"
     t.string   "bio"
@@ -92,6 +94,9 @@ ActiveRecord::Schema.define(:version => 20140103021749) do
     t.integer "story_id"
     t.integer "person_id"
   end
+
+  add_index "people_stories", ["person_id"], :name => "index_people_stories_on_person_id"
+  add_index "people_stories", ["story_id"], :name => "index_people_stories_on_story_id"
 
   create_table "stories", :force => true do |t|
     t.string   "name"

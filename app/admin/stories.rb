@@ -15,7 +15,7 @@ ActiveAdmin.register Story do
       end
     end
     column :pages do |story|
-      story.pages.count
+      story.pages.ordered.count
     end
     default_actions
   end
@@ -47,14 +47,14 @@ ActiveAdmin.register Story do
         end.join(" ").html_safe
       end
       row :pages do
-        story.pages.map do |p|
+        story.pages.ordered.map do |p|
           link_to admin_page_path(p) do
             image_tag p.image.url(:thumb)
           end
         end.join(" ").html_safe
       end
     end
-    active_admin_comments
+    # active_admin_comments
   end
 
   # Add New Story button to show page, for quick editing
@@ -62,4 +62,17 @@ ActiveAdmin.register Story do
     link_to "New Story", new_admin_story_path
   end
 
+  # Return to index after create, update
+  controller do
+    def create
+      create! do |format|
+        format.html { redirect_to admin_stories_url }
+      end
+    end
+    def update
+      update! do |format|
+        format.html { redirect_to admin_stories_url }
+      end
+    end
+  end
 end

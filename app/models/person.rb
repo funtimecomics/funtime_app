@@ -9,5 +9,9 @@ class Person < ActiveRecord::Base
   scope :alphabetically, order("name ASC")
   scope :recent, ->(num) { order('created_at DESC').limit(num) }
 
-  validates_uniqueness_of :name
+  validates_attachment :image,
+    :presence => true,
+    :content_type => { :content_type => ["image/jpg", "image/jpeg", "image/gif", "image/png"] },
+    :size => { :in => 0..5.megabytes }
+  validates :name, presence: true, uniqueness: true
 end
