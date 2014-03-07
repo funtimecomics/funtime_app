@@ -12,7 +12,7 @@ ActiveAdmin.register Page do
 
   form :html => { :enctype => "multipart/form-data" } do |f|
     f.inputs "Page", :multipart => true do
-      f.input :story
+      f.input :story, :as => :select, :collection => option_groups_from_collection_for_select(Person.alphabetical, :stories, :name, :id, :name)
       f.input :position
       f.input :image
     end
