@@ -5,8 +5,8 @@ describe Person do
   it "has a valid factory" do
     FactoryGirl.create(:person).should be_valid
   end
-  it "is invalid without an image" do
-    FactoryGirl.build(:person, image_file_name: nil).should_not be_valid
+  it "is valid without an image" do
+    FactoryGirl.build(:person, image_file_name: nil).should be_valid
   end
   it "is invalid with a non-image MIME type" do
     FactoryGirl.build(:person, image_content_type: 'audio/mp4').should_not be_valid

@@ -10,7 +10,6 @@ class Person < ActiveRecord::Base
   scope :recent, ->(num) { order('updated_at DESC').limit(num) }
 
   validates_attachment :image,
-    :presence => true,
     :content_type => { :content_type => ["image/jpg", "image/jpeg", "image/gif", "image/png"] },
     :size => { :in => 0..5.megabytes }
   validates :name, presence: true, uniqueness: true
