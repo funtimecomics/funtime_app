@@ -2,8 +2,8 @@ class SiteController < InheritedResources::Base
   # GET /pages
   # GET /pages.json
   def index
-    @stories = Story.all
-    @people = Person.all
+    @stories = Story.alphabetical.recent(24)
+    @people = Person.alphabetical.recent(24)
 
     respond_to do |format|
       format.html # index.html.erb

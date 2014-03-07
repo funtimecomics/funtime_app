@@ -2,7 +2,7 @@ class StoriesController < InheritedResources::Base
   # GET /stories
   # GET /stories.json
   def index
-    @stories = Story.all
+    @stories = Story.alphabetical
 
     respond_to do |format|
       format.html # index.html.erb

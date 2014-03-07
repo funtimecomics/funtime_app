@@ -9,7 +9,7 @@ ActiveAdmin.register Person do
     end
     column :stories do |person|
       content_tag :ul do
-        content_tag_for :li, person.stories.alphabetically do |story|
+        content_tag_for :li, person.stories.alphabetical do |story|
           link_to story.name, edit_admin_story_path(story.id)
         end
       end

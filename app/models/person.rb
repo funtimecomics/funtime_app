@@ -6,8 +6,8 @@ class Person < ActiveRecord::Base
   has_attached_file :image, styles: { original: "300x300>", thumb: "100x100>" }, :default_url => "/default_images/:style/person.png"
   has_and_belongs_to_many :stories
 
-  scope :alphabetically, order("name ASC")
-  scope :recent, ->(num) { order('created_at DESC').limit(num) }
+  scope :alphabetical, order("name ASC")
+  scope :recent, ->(num) { order('updated_at DESC').limit(num) }
 
   validates_attachment :image,
     :presence => true,

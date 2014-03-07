@@ -9,7 +9,7 @@ ActiveAdmin.register Story do
     end
     column :people do |story|
       content_tag :ul do
-        content_tag_for :li, story.people.alphabetically do |person|
+        content_tag_for :li, story.people.alphabetical do |person|
           link_to person.name, edit_admin_person_path(person.id)
         end
       end
@@ -24,7 +24,7 @@ ActiveAdmin.register Story do
     f.inputs "Story" do
       f.input :name
       f.input :cover_image
-      f.input :people, as: :select, collection: Person.alphabetically
+      f.input :people, as: :select, collection: Person.alphabetical
     end
 
     f.buttons
@@ -42,7 +42,7 @@ ActiveAdmin.register Story do
         image_tag story.cover_image.url(:thumb)
       end
       row :people do
-        story.people.alphabetically.map do |p|
+        story.people.alphabetical.map do |p|
           link_to p.name, admin_page_path(p)
         end.join(" ").html_safe
       end
