@@ -27,4 +27,8 @@ describe Person do
     FactoryGirl.create(:person, name: 'foo')
     FactoryGirl.build(:person, name: 'foo').should_not be_valid
   end
+  it "allows long bio text" do
+    person = FactoryGirl.build(:person, bio: Faker::Lorem.characters(1024))
+    person.save.should eq true
+  end
 end

@@ -24,6 +24,7 @@ end
 group :development do
   gem 'pry-rails'
   gem 'rails_best_practices'
+  gem 'brakeman', :require => false
 end
 
 group :development, :test do
