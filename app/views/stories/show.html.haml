@@ -28,8 +28,9 @@
             = render partial: "pages/pages", object: @story.pages.ordered, locals: {story: @story}
         .row
           .col-md-12
-            .description
-              = @story.description.html_safe
+            - if @story.description
+              .description
+                = @story.description.html_safe
         .row.creators
           .col-md-12
             %h2 Creators
