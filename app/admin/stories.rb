@@ -23,6 +23,7 @@ ActiveAdmin.register Story do
   form do |f|
     f.inputs "Story" do
       f.input :name
+      f.input :description
       f.input :cover_image
       f.input :people, as: :select, collection: Person.alphabetical
     end
