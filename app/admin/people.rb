@@ -22,15 +22,13 @@ ActiveAdmin.register Person do
       f.semantic_errors *f.object.errors.keys
       f.input :name
       f.input :image
-      f.input :bio, as: :text
+      f.input :bio, as: :html_editor
     end
     f.buttons
   end
 
   show do |person|
     attributes_table do
-      # row :id
-      # row :created_at
       row :image_file_name
       row :image_content_type
       row :image_file_size

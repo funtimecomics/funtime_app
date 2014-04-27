@@ -56,6 +56,8 @@ gem 'rails_12factor', group: :production
 
 gem 'friendly_id'
 
+gem 'active_admin_editor'
+
 # gem 'twitter-bootstrap-rails'
 
 # To use ActiveModel has_secure_password

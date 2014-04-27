@@ -10,7 +10,7 @@
 .section
   .container
     .row
-      .col-md-10
+      .col-md-9
         #carousel-pages.carousel.slide
           / Wrapper for slides
           .carousel-inner
@@ -22,13 +22,14 @@
             %span.icon-prev
           %a.right.carousel-control{"data-slide" => "next", :href => "#carousel-pages"}
             %span.icon-next
-      .col-md-2
+      .col-md-3
         .row
           .col-md-12
             = render partial: "pages/pages", object: @story.pages.ordered, locals: {story: @story}
-        .row.description
+        .row
           .col-md-12
-            = @story.description
+            .description
+              = @story.description.html_safe
         .row.creators
           .col-md-12
             %h2 Creators

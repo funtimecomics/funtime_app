@@ -13,7 +13,7 @@
       .person-image.original
         = image_tag @person.image.url(:original)
     .col-md-6
-      = simple_format(@person.bio)
+      = @person.bio.html_safe
   .row
     .col-md-12
       %h3 Stories

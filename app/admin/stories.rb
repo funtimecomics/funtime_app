@@ -26,7 +26,7 @@ ActiveAdmin.register Story do
       f.input :name
       f.input :cover_image, :image_preview => true, hint: "Cover image should be square, and will be resized to 300 by 300 pixels"
       f.input :people, as: :select, collection: Person.alphabetical
-      f.input :description
+      f.input :description, as: :html_editor
       f.has_many :pages, for: [:pages, f.object.pages.ordered], :allow_destroy => true, :heading => 'Pages', :new_record => true, hint: "foo" do |pf|
         pf.input :position
         pf.input :image, :image_preview => true, hint: "Page images will be resized to a width of 945 pixels"
@@ -38,8 +38,6 @@ ActiveAdmin.register Story do
 
   show do |story|
     attributes_table do
-      # row :id
-      # row :created_at
       row :cover_image_file_name
       row :cover_image_content_type
       row :cover_image_file_size

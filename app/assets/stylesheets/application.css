@@ -8,5 +8,6 @@
  *= require stories
  *= require people
  *= require static
+ *= require active_admin/editor/wysiwyg
  *= require_self
 */
