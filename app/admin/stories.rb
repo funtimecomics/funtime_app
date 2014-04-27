@@ -23,11 +23,11 @@ ActiveAdmin.register Story do
   form do |f|
     f.inputs "Story" do
       f.input :name
-      f.input :cover_image
+      f.input :cover_image, :image_preview => true, hint: "Cover image should be square, and will be resized to 300 by 300 pixels"
       f.input :people, as: :select, collection: Person.alphabetical
-      f.has_many :pages, for: [:pages, f.object.pages.ordered], :allow_destroy => true, :heading => 'Pages', :new_record => true do |pf|
+      f.has_many :pages, for: [:pages, f.object.pages.ordered], :allow_destroy => true, :heading => 'Pages', :new_record => true, hint: "foo" do |pf|
         pf.input :position
-        pf.input :image, :hint => pf.template.image_tag(pf.object.image.url(:thumb))
+        pf.input :image, :image_preview => true, hint: "Page images will be resized to a width of 945 pixels"
       end
     end
 
