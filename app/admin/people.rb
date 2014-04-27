@@ -19,6 +19,7 @@ ActiveAdmin.register Person do
 
   form :html => { :enctype => "multipart/form-data" } do |f|
     f.inputs "Person", :multipart => true do
+      f.semantic_errors *f.object.errors.keys
       f.input :name
       f.input :image
       f.input :bio, as: :text
