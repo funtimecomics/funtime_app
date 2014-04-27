@@ -1,0 +1,12 @@
+%li.featured_story.col-md-6
+  .row
+    .col-md-6
+      = link_to featured_story do
+        .thumbnail
+          = image_tag featured_story.cover_image.url(:medium)
+    .col-md-6
+      %h3
+        = link_to featured_story do
+          = truncate(featured_story.name, length: 140)
+      .creators
+        = featured_story.people.map{|creator| link_to creator.name, creator}.join(', ').html_safe

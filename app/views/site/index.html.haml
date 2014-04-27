@@ -1,7 +1,6 @@
 %header
   .header_image
-    / = image_tag "/ftccgwko.jpg"
-
+    // = image_tag "/ftccgwko.jpg"
 
 .section.stories
   .container
@@ -10,6 +9,7 @@
         %h2 Stories
         = link_to "See All Stories", stories_path
       .col-md-10.col-sm-12
+        = render partial: "stories/featured_stories", object: @recent_stories, person: nil
         = render partial: "stories/stories", object: @stories, person: nil
 
 .section.people

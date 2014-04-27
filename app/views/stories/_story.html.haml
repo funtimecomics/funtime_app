@@ -2,7 +2,8 @@
   = link_to story do
     .thumbnail
       = image_tag story.cover_image.url(:thumb)
-    = truncate(story.name, length: 30)
+    %h4
+      = truncate(story.name, length: 30)
 
   - if person
     - coauthors = story.people.delete_if{|p| p ==person}
