@@ -9,43 +9,43 @@
             fill: #231F20;
         }
         #Funtime-Comics-Text #F{
-            fill: red;
+            fill: #dce73a;
         }
         #Funtime-Comics-Text #U{
-            fill: red;
+            fill: #dce73a;
         }
         #Funtime-Comics-Text #N{
-            fill: red;
+            fill: #dce73a;
         }
         #Funtime-Comics-Text #T{
-            fill: red;
+            fill: #dce73a;
         }
         #Funtime-Comics-Text #I1{
-            fill: red;
+            fill: #dce73a;
         }
         #Funtime-Comics-Text #M1{
-            fill: red;
+            fill: #dce73a;
         }
         #Funtime-Comics-Text #E{
-            fill: red;
+            fill: #dce73a;
         }
         #Funtime-Comics-Text #C1{
-            fill: red;
+            fill: #dce73a;
         }
         #Funtime-Comics-Text #O{
-            fill: red;
+            fill: #dce73a;
         }
         #Funtime-Comics-Text #M2{
-            fill: red;
+            fill: #dce73a;
         }
         #Funtime-Comics-Text #I2{
-            fill: red;
+            fill: #dce73a;
         }
         #Funtime-Comics-Text #C2{
-            fill: red;
+            fill: #dce73a;
         }
         #Funtime-Comics-Text #S{
-            fill: red;
+            fill: #dce73a;
         }
         ]]>
     </style>
