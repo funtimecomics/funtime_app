@@ -11,10 +11,30 @@ class Story < ActiveRecord::Base
 
   scope :alphabetical, order("name ASC")
   scope :recent, ->(num) { order('updated_at DESC').limit(num) }
+  scope :without_pages, where("(select count(*) from pages where story_id=stories.id) = 0")
+  scope :with_pages, where("(select count(*) from pages where story_id=stories.id) > 0")
+
 
   validates_attachment :cover_image,
     :presence => true,
     :content_type => { :content_type => ["image/jpg", "image/jpeg", "image/gif", "image/png"] },
     :size => { :in => 0..5.megabytes }
   validates :name, presence: true, uniqueness: true
+
+  def length_category
+    case pages.count
+    when 0
+      "empty"
+    when 1
+      "one_page"
+    when 2..7
+      "short"
+    when 8..15
+      "medium"
+    when 16..31
+      "long"
+    else
+      "epic"
+    end
+  end
 end

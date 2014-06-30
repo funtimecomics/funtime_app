@@ -14,7 +14,7 @@ class PeopleController < InheritedResources::Base
   # GET /people/1.json
   def show
     @person = Person.find(params[:id])
-    @stories = @person.stories.alphabetical
+    @stories = @person.stories.with_pages.alphabetical
 
     respond_to do |format|
       format.html # show.html.erb

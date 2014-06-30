@@ -1,7 +1,7 @@
 /* Welcome to Compass.
  * In this file you should write your main styles. (or centralize your imports)
  * Import this file using the following HTML or equivalent:
- * <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css" /> 
+ * <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css" />
  */
 
 @import "compass"
@@ -15,6 +15,14 @@ $colour-link-active: #1e7944
 $colour-link-visited: #1e7944
 $colour-link-focus: #1e7944
 $colour-highlight: #e6e546
+// $colour-background: #f3f0f1
+$colour-background: red
+$colour-navbar: #231f20
+
+body
+  // background: $colour-background url(image_path('greyfloral.png')) 0 0 repeat
+  background: red, yellow
+
 a
   +link-colors($colour-link-normal, $colour-link-hover, $colour-link-active, $colour-link-visited, $colour-link-focus)
   &:hover
@@ -33,7 +41,7 @@ ul
 .navbar
   @include border-radius(0)
   border: none
-  background: black
+  background: $colour-navbar
   margin: 80px 0 70px 0
   font-family: 'Mouse Memoirs', sans-serif
   font-size: 24px
@@ -82,7 +90,7 @@ footer
     .person
       min-width: 165px
       margin-bottom: 1em
-            
+
 .carousel-control
   width: 50%
   .icon-prev,

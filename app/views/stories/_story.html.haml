@@ -1,4 +1,4 @@
-%li.story.col-md-2.col-sm-3.col-xs-6
+%li.story.col-md-2.col-sm-3.col-xs-6{class: "length-#{story.length_category}"}
   = link_to story do
     .thumbnail
       = image_tag story.cover_image.url(:thumb)
