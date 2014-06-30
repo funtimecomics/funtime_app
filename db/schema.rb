@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140427060246) do
+ActiveRecord::Schema.define(:version => 20140630101132) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -108,8 +108,22 @@ ActiveRecord::Schema.define(:version => 20140427060246) do
     t.datetime "cover_image_updated_at"
     t.string   "slug"
     t.text     "description"
+    t.integer  "pages_count"
   end
 
   add_index "stories", ["slug"], :name => "index_stories_on_slug"
+
+  create_table "stories_people", :force => true do |t|
+    t.integer "story_id"
+    t.integer "person_id"
+  end
+
+  create_table "story_pages", :force => true do |t|
+    t.integer  "story_id"
+    t.integer  "page_id"
+    t.integer  "page_number"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
 
 end

@@ -21,19 +21,21 @@ ActiveAdmin.register Story do
   end
 
   form do |f|
-    f.inputs "Story" do
+    f.inputs "Story", class: "inputs story" do
       f.semantic_errors *f.object.errors.keys
       f.input :name
       f.input :cover_image, :image_preview => true, hint: "Cover image should be square, and will be resized to 300 by 300 pixels"
       f.input :people, as: :select, collection: Person.alphabetical
       f.input :description, as: :html_editor
-      f.has_many :pages, for: [:pages, f.object.pages.ordered], :allow_destroy => true, :heading => 'Pages', :new_record => true, hint: "foo" do |pf|
-        pf.input :position
+    end
+    f.buttons
+    f.inputs "Pages", class: "inputs story_pages" do
+      f.has_many :pages, for: [:pages, f.object.pages.ordered], :allow_destroy => true, :new_record => true, heading: false do |pf|
+        pf.input :position, input_html: {value: pf.object.position || f.object.pages.count + 1}, label: "Page Number"
         pf.input :image, :image_preview => true, hint: "Page images will be resized to a width of 945 pixels"
       end
     end
 
-    f.buttons
   end
 
   show do |story|
