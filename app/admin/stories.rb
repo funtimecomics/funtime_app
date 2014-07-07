@@ -49,14 +49,12 @@ ActiveAdmin.register Story do
       end
       row :people do
         story.people.alphabetical.map do |p|
-          link_to p.name, admin_page_path(p)
+          link_to p.name, admin_person_path(p)
         end.join(" ").html_safe
       end
       row :pages do
         story.pages.ordered.map do |p|
-          link_to admin_page_path(p) do
-            image_tag p.image.url(:thumb)
-          end
+          image_tag p.image.url(:thumb)
         end.join(" ").html_safe
       end
     end

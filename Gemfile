@@ -26,6 +26,7 @@ group :development do
   gem 'pry-remote'
   gem 'rails_best_practices'
   gem 'brakeman', :require => false
+  gem 'better_errors'
 end
 
 group :development, :test do
