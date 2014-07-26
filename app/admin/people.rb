@@ -16,7 +16,7 @@ ActiveAdmin.register Person do
         end
       end
     end
-    default_actions
+    actions
   end
 
   form :html => { :enctype => "multipart/form-data" } do |f|
@@ -26,7 +26,7 @@ ActiveAdmin.register Person do
       f.input :image
       f.input :bio, as: :html_editor
     end
-    f.buttons
+    f.actions
   end
 
   show do |person|

@@ -1,6 +1,6 @@
 ActiveAdmin.register Story do
-  permit_params :cover_image, :cover_image_file_name, :cover_image_content_type, :cover_image_file_size, :cover_image_updated_at, :name, :story_pages, :person_ids, :description,
-    pages_attributes: [:image, :story_id, :_destroy]
+  permit_params :cover_image, :cover_image_file_name, :cover_image_content_type, :cover_image_file_size, :cover_image_updated_at, :name, :story_pages, :person_ids, :description, :rating,
+    pages_attributes: [:id, :position, :image, :image_file_name, :image_content_type, :image_file_size, :image_updated_at, :story_id, :_destroy]
 
 
   index do
@@ -10,6 +10,9 @@ ActiveAdmin.register Story do
     end
     column :cover_image do |story|
       image_tag( story.cover_image.url(:thumb) )
+    end
+    column :rating do |story|
+      story.rating
     end
     column :people do |story|
       content_tag :ul do
@@ -21,18 +24,19 @@ ActiveAdmin.register Story do
     column :pages do |story|
       story.pages.ordered.count
     end
-    default_actions
+    actions
   end
 
   form do |f|
     f.inputs "Story", class: "inputs story" do
       f.semantic_errors *f.object.errors.keys
       f.input :name
+      f.input :rating, as: :select, collection: Story.ratings.keys
       f.input :cover_image, :image_preview => true, hint: "Cover image should be square, and will be resized to 300 by 300 pixels"
       f.input :people, as: :select, collection: Person.alphabetical
       f.input :description, as: :html_editor
     end
-    f.buttons
+    f.actions
     f.inputs "Pages", class: "inputs story_pages" do
       f.has_many :pages, for: [:pages, f.object.pages.ordered], :allow_destroy => true, :new_record => true, heading: false do |pf|
         pf.input :position, input_html: {value: pf.object.position || f.object.pages.count + 1}, label: "Page Number"
@@ -72,13 +76,23 @@ ActiveAdmin.register Story do
   # Return to index after create, update
   controller do
     def create
-      create! do |format|
-        format.html { redirect_to admin_stories_url }
+      @story = Story.new(permitted_params[:story])
+      respond_to do |format|
+        if @story.save
+          format.html { redirect_to admin_stories_url, notice: 'Story was successfully created.' }
+        else
+          format.html { render action: "new" }
+        end
       end
     end
     def update
-      update! do |format|
-        format.html { redirect_to admin_stories_url }
+      @story = Story.friendly.find(params[:id])
+      respond_to do |format|
+        if @story.update_attributes(permitted_params[:story])
+          format.html { redirect_to admin_stories_url, notice: 'Story was successfully updated.' }
+        else
+          format.html { render action: "edit" }
+        end
       end
     end
   end

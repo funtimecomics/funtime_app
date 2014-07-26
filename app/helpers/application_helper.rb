@@ -8,4 +8,24 @@ module ApplicationHelper
     end
   end
 
+  def rating_dot(story)
+    content_tag(:div, class: "rating rating-#{@story.rating || 'unrated'}") do
+      story.rating || 'unrated'
+    end
+  end
+
+  def rating_info(story)
+    case story.rating
+    when 'green'
+      'This story should be suitable for all ages'
+    when 'yellow'
+      'This story may not be suitable for young children'
+    when 'red'
+      'This story is suitable for adults'
+    when 'blue'
+      'This story contains material some adults may find objectionable'
+    else
+      'This story hasn\'t been rated for age-appropriateness'
+    end
+  end
 end

@@ -4,9 +4,10 @@ class Story < ActiveRecord::Base
 
   has_attached_file :cover_image, :styles => { :medium => "300x300>", :thumb => "100x100>" }, :default_url => "/default_images/:style/story.png"
   has_many :pages
+  accepts_nested_attributes_for :pages, :allow_destroy => true
   has_and_belongs_to_many :people
 
-  accepts_nested_attributes_for :pages, :allow_destroy => true
+  enum rating: [:green, :yellow, :red, :blue]
 
   scope :alphabetical, -> { order("name ASC") }
   scope :recent, ->(num) { order('updated_at DESC').limit(num) }

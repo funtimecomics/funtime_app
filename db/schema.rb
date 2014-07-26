@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140630101132) do
+ActiveRecord::Schema.define(version: 20140726011515) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -22,14 +22,14 @@ ActiveRecord::Schema.define(version: 20140630101132) do
     t.integer  "author_id"
     t.string   "author_type"
     t.text     "body"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
     t.string   "namespace"
   end
 
   add_index "active_admin_comments", ["author_type", "author_id"], name: "index_active_admin_comments_on_author_type_and_author_id", using: :btree
   add_index "active_admin_comments", ["namespace"], name: "index_active_admin_comments_on_namespace", using: :btree
-  add_index "active_admin_comments", ["resource_type", "resource_id"], name: "index_active_admin_comments_on_resource_type_and_resource_id", using: :btree
+  add_index "active_admin_comments", ["resource_type", "resource_id"], name: "index_admin_notes_on_resource_type_and_resource_id", using: :btree
 
   create_table "admin_users", force: true do |t|
     t.string   "email",                  default: "", null: false
@@ -42,8 +42,8 @@ ActiveRecord::Schema.define(version: 20140630101132) do
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
     t.string   "last_sign_in_ip"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",                          null: false
+    t.datetime "updated_at",                          null: false
   end
 
   add_index "admin_users", ["email"], name: "index_admin_users_on_email", unique: true, using: :btree
@@ -51,8 +51,8 @@ ActiveRecord::Schema.define(version: 20140630101132) do
 
   create_table "controllers", force: true do |t|
     t.string   "Pages"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "friendly_id_slugs", force: true do |t|
@@ -68,8 +68,8 @@ ActiveRecord::Schema.define(version: 20140630101132) do
 
   create_table "pages", force: true do |t|
     t.integer  "story_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
     t.string   "image_file_name"
     t.string   "image_content_type"
     t.integer  "image_file_size"
@@ -82,8 +82,8 @@ ActiveRecord::Schema.define(version: 20140630101132) do
   create_table "people", force: true do |t|
     t.string   "name"
     t.text     "bio"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
     t.string   "image_file_name"
     t.string   "image_content_type"
     t.integer  "image_file_size"
@@ -103,8 +103,8 @@ ActiveRecord::Schema.define(version: 20140630101132) do
 
   create_table "stories", force: true do |t|
     t.string   "name"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
     t.string   "cover_image_file_name"
     t.string   "cover_image_content_type"
     t.integer  "cover_image_file_size"
@@ -112,8 +112,22 @@ ActiveRecord::Schema.define(version: 20140630101132) do
     t.string   "slug"
     t.text     "description"
     t.integer  "pages_count"
+    t.integer  "rating"
   end
 
   add_index "stories", ["slug"], name: "index_stories_on_slug", using: :btree
+
+  create_table "stories_people", force: true do |t|
+    t.integer "story_id"
+    t.integer "person_id"
+  end
+
+  create_table "story_pages", force: true do |t|
+    t.integer  "story_id"
+    t.integer  "page_id"
+    t.integer  "page_number"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
 
 end
