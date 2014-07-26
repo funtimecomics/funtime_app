@@ -1,12 +1,11 @@
 class Page < ActiveRecord::Base
-  attr_accessible :image, :story_id
   delegate :name, :to => :story, :prefix => true
 
   has_attached_file :image, styles: { original: "945>", thumb: "70>" }, :default_url => "/images/:style/missing.png"
   belongs_to :story, counter_cache: true
   acts_as_list scope: :story
 
-  scope :ordered, order('position ASC')
+  scope :ordered, -> { order('position ASC') }
   scope :recent, ->(num) { order('created_at DESC').limit(num) }
 
   validates_attachment :image,

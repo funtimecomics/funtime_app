@@ -1,4 +1,8 @@
 ActiveAdmin.register Story do
+  permit_params :cover_image, :cover_image_file_name, :cover_image_content_type, :cover_image_file_size, :cover_image_updated_at, :name, :story_pages, :person_ids, :description,
+    pages_attributes: [:image, :story_id, :_destroy]
+
+
   index do
     selectable_column
     column :story do |story|
@@ -35,7 +39,6 @@ ActiveAdmin.register Story do
         pf.input :image, :image_preview => true, hint: "Page images will be resized to a width of 945 pixels"
       end
     end
-
   end
 
   show do |story|
@@ -78,5 +81,12 @@ ActiveAdmin.register Story do
         format.html { redirect_to admin_stories_url }
       end
     end
+  end
+
+  collection_action :sort, :method => :post do
+    params[:pages].each_with_index do |id, index|
+      Page.update_all(['position=?', index+1], ['id=?', id])
+    end
+    render :nothing => true
   end
 end

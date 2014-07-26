@@ -1,7 +1,7 @@
 # spec/controllers/people_controller_spec.rb
 require 'spec_helper'
 
-describe PeopleController do
+describe PeopleController, :type => :controller do
   describe "GET #index" do
     it "populates an array of people" do
       person = FactoryGirl.create(:person)
@@ -16,12 +16,12 @@ describe PeopleController do
   describe "GET #show" do
     it "assigns the requested person to @person" do
       person = FactoryGirl.create(:person)
-      get :show, id: person
+      get :show, id: person.id
       assigns(:person).should eq(person)
     end
     it "renders the :show view" do
       person = FactoryGirl.create(:person)
-      get :show, id: person
+      get :show, id: person.id
       response.should render_template :show
     end
   end

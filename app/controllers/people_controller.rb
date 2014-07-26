@@ -13,7 +13,7 @@ class PeopleController < InheritedResources::Base
   # GET /people/1
   # GET /people/1.json
   def show
-    @person = Person.find(params[:id])
+    @person = Person.friendly.find(params[:id])
     @stories = @person.stories.with_pages.alphabetical
 
     respond_to do |format|

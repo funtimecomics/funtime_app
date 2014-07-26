@@ -2,17 +2,15 @@ class Story < ActiveRecord::Base
   extend FriendlyId
   friendly_id :name, use: [:slugged, :history]
 
-  attr_accessible :cover_image, :cover_image_file_name, :cover_image_content_type, :cover_image_file_size, :cover_image_updated_at, :name, :story_pages, :pages_attributes, :person_ids, :description
   has_attached_file :cover_image, :styles => { :medium => "300x300>", :thumb => "100x100>" }, :default_url => "/default_images/:style/story.png"
   has_many :pages
   has_and_belongs_to_many :people
 
   accepts_nested_attributes_for :pages, :allow_destroy => true
 
-  scope :alphabetical, order("name ASC")
+  scope :alphabetical, -> { order("name ASC") }
   scope :recent, ->(num) { order('updated_at DESC').limit(num) }
-  scope :without_pages, where("(select count(*) from pages where story_id=stories.id) = 0")
-  scope :with_pages, where("(select count(*) from pages where story_id=stories.id) > 0")
+  scope :with_pages, -> { where("(select count(*) from pages where story_id=stories.id) > 0") }
 
 
   validates_attachment :cover_image,

@@ -13,7 +13,7 @@ class StoriesController < InheritedResources::Base
   # GET /stories/1
   # GET /stories/1.json
   def show
-    @story = Story.find(params[:id])
+    @story = Story.friendly.find(params[:id])
     @people = @story.people.alphabetical
 
     respond_to do |format|

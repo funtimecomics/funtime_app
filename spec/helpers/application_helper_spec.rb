@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 
-describe ApplicationHelper do
+describe ApplicationHelper, :type => :helper do
   describe "#nav_link" do
     it "includes the active class when on the current page" do
       allow(self).to receive(:current_page?).and_return(true)

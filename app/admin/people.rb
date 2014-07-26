@@ -1,4 +1,6 @@
 ActiveAdmin.register Person do
+  permit_params :bio, :image, :name
+
   index do
     selectable_column
     column :person do |person|

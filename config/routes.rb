@@ -67,6 +67,6 @@ FuntimeApp::Application.routes.draw do
   end
 
   # If all else fails, check for static pages
-  match ':action' => 'static#:action'
+  get ':action' => 'static#:action'
 
 end
