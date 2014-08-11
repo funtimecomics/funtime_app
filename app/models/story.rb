@@ -1,6 +1,7 @@
 class Story < ActiveRecord::Base
   extend FriendlyId
   friendly_id :name, use: [:slugged, :history]
+  include Filterable
 
   has_attached_file :cover_image, :styles => { :medium => "300x300>", :thumb => "100x100>" }, :default_url => "/default_images/:style/story.png"
   has_many :pages
@@ -9,6 +10,8 @@ class Story < ActiveRecord::Base
 
   enum rating: [:green, :yellow, :red, :blue]
 
+  scope :rating, -> (rating_text) { where(rating: Story.ratings[rating_text]) }
+  scope :starts_with, -> (name) { where("name like ?", "#{name}%")}
   scope :alphabetical, -> { order("name ASC") }
   scope :recent, ->(num) { order('updated_at DESC').limit(num) }
   scope :with_pages, -> { where("(select count(*) from pages where story_id=stories.id) > 0") }

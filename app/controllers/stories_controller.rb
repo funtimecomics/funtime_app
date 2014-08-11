@@ -2,8 +2,10 @@ class StoriesController < InheritedResources::Base
   # GET /stories
   # GET /stories.json
   def index
-    @stories = Story.with_pages.alphabetical
-
+    @stories = Story.filter(params.slice(:rating, :starts_with))
+    @stories = @stories.with_pages.alphabetical
+    @rating = params[:rating]
+    @starts_with = params[:starts_with]
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @stories }
