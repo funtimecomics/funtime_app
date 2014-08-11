@@ -4,10 +4,9 @@
       = link_to featured_story do
         .thumbnail
           = image_tag featured_story.cover_image.url(:medium)
-          .rating{class: "rating-#{featured_story.rating || 'unrated'}"}
-            = featured_story.rating || 'unrated'
     .col-md-6.col-sm-6.col-xs-6
       %h3
+        = rating_dot(featured_story)
         = link_to featured_story do
           = truncate(featured_story.name, length: 140)
       .creators

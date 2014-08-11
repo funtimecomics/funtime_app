@@ -9,7 +9,7 @@ module ApplicationHelper
   end
 
   def rating_dot(story)
-    content_tag(:div, class: "rating rating-#{@story.rating || 'unrated'}") do
+    content_tag(:span, class: "rating rating-#{story.rating || 'unrated'}") do
       story.rating || 'unrated'
     end
   end

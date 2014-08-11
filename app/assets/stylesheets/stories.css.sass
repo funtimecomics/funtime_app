@@ -26,11 +26,6 @@
     @include box-shadow(#aaaaaa 8px 8px 0)
   a
     width: 100%
-  .rating
-    display: block
-    position: absolute
-    right: 0.5em
-    top: 0.5em
 .story
   text-align: center
   height: 130px
@@ -45,19 +40,21 @@
     height: 200px
 
 .rating
-  width: 1em
-  height: 1em
+  display: inline-block
+  width: 0.5em
+  height: 0.5em
+  vertical-align: middle
   @include border-radius(50%)
   overflow: hidden
   text-indent: -10000em
   &.rating-unrated
-    background: #aaaaaa
+    background: $colour-rating_unrated
   &.rating-green
-    background: #aaffaa
+    background: $colour-rating_green
   &.rating-yellow
-    background: #ffffaa
+    background: $colour-rating_yellow
   &.rating-red
-    background: #ffaaaa
+    background: $colour-rating_red
   &.rating-blue
     background: $colour-rating_blue
 

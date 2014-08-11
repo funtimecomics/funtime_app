@@ -1,0 +1,36 @@
+- content_for :title do
+  Ratings
+
+%header
+  .container
+    .row
+      .col-md-12
+        %h1 Ratings
+.section
+  .container
+    .row
+      .col-md-12
+        Info about comics ratings goes here.
+        %ul.ratings
+          %li
+            %span.rating.rating-green
+              green
+            Green
+          %li
+            %span.rating.rating-yellow
+              yellow
+            Yellow
+          %li
+            %span.rating.rating-red
+              red
+            Red
+          %li
+            %span.rating.rating-blue
+              blue
+            Blue
+          %li
+            %span.rating.rating-unrated
+              unrated
+            Unrated
+
+= render partial: "site/footer"
