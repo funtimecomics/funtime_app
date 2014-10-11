@@ -9,12 +9,25 @@
 .container
   .row
     .col-md-12
-      = form_tag '', :method => :get do
-        = select_tag :rating, options_for_select(Story.ratings.keys + ["unknown"], @rating), include_blank: true
-        = select_tag :starts_with, options_for_select(('A'..'Z').to_a, @starts_with), include_blank: true
-        = submit_tag 'Filter'
+      .filters
+        = form_tag stories_path, :method => :get, class: 'form-inline' do
+          Show me
+          = select_tag :rating, options_for_select(Story.ratings.keys + ["unrated"], @rating), prompt: 'all', class: 'form-control input-sm'
+          stories
+          = submit_tag 'Filter', class: 'btn btn-default'
   .row
     .col-md-12
-      = render partial: "stories/stories", object: @stories, person: nil
+      .pagination-wrapper
+        = paginate @stories
+  .row
+    .col-md-12
+      - if @stories.any?
+        = render partial: "stories/stories", object: @stories, person: nil
+      - else
+        = "There are no stories like that."
+  .row
+    .col-md-12
+      .pagination-wrapper
+        = paginate @stories
 
 = render partial: "site/footer"

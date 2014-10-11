@@ -9,6 +9,14 @@
 .container
   .row
     .col-md-12
+      .pagination-wrapper
+        = paginate @people
+  .row
+    .col-md-12
       = render partial: "people/people", object: @people
+  .row
+    .col-md-12
+      .pagination-wrapper
+        = paginate @people
 
 = render partial: "site/footer"

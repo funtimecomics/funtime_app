@@ -2,7 +2,7 @@ class PeopleController < InheritedResources::Base
   # GET /people
   # GET /people.json
   def index
-    @people = Person.alphabetical
+    @people = Person.alphabetical.page params[:page]
 
     respond_to do |format|
       format.html # index.html.erb

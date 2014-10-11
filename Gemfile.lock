@@ -309,6 +309,7 @@ DEPENDENCIES
   friendly_id
   haml-rails
   jquery-rails
+  kaminari
   paperclip
   pg
   pry-rails
