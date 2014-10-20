@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140726011515) do
+ActiveRecord::Schema.define(version: 20141020061254) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -113,6 +113,7 @@ ActiveRecord::Schema.define(version: 20140726011515) do
     t.text     "description"
     t.integer  "pages_count"
     t.integer  "rating"
+    t.boolean  "unfinished"
   end
 
   add_index "stories", ["slug"], name: "index_stories_on_slug", using: :btree

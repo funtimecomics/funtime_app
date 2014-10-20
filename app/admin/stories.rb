@@ -1,5 +1,5 @@
 ActiveAdmin.register Story do
-  permit_params :cover_image, :cover_image_file_name, :cover_image_content_type, :cover_image_file_size, :cover_image_updated_at, :name, :story_pages, :person_ids, :description, :rating,
+  permit_params :cover_image, :cover_image_file_name, :cover_image_content_type, :cover_image_file_size, :cover_image_updated_at, :name, :story_pages, :person_ids, :description, :rating, :unfinished,
     pages_attributes: [:id, :position, :image, :image_file_name, :image_content_type, :image_file_size, :image_updated_at, :story_id, :_destroy]
 
 
@@ -34,6 +34,7 @@ ActiveAdmin.register Story do
       f.input :rating, as: :select, collection: Story.ratings.keys
       f.input :cover_image, :image_preview => true, hint: "Cover image should be square, and will be resized to 300 by 300 pixels"
       f.input :people, as: :select, collection: Person.alphabetical
+      f.input :unfinished
       f.input :description, as: :html_editor
     end
     f.actions
