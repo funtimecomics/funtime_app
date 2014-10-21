@@ -12,6 +12,7 @@
     margin: 0 1em 1em 0
     position: relative
     width: 70px
+    height: 70px
     a
       cursor: pointer
     &.active
@@ -21,7 +22,7 @@
     .page-number
       position: absolute
       right: -0.5em
-      bottom: -0.5em
+      top: -0.5em
       @include border-radius(1em)
       background: black
       color: white
@@ -30,9 +31,7 @@
       height: 2em
       border: solid 2px white
       line-height: 1.6
-@media(min-width:992px)
-  .pages .page:nth-child(even)
-    margin-right: 0
+
 
 
 #carousel-pages
