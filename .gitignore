@@ -16,3 +16,4 @@ pickle-email-*.html
 .DS_Store
 
 /.gems/
+.powenv

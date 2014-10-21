@@ -1,5 +1,5 @@
 ActiveAdmin.register Story do
-  permit_params :cover_image, :cover_image_file_name, :cover_image_content_type, :cover_image_file_size, :cover_image_updated_at, :name, :story_pages, :person_ids, :description, :rating, :unfinished,
+  permit_params :cover_image, :cover_image_file_name, :cover_image_content_type, :cover_image_file_size, :cover_image_updated_at, :name, :story_pages, {person_ids: []}, :description, :rating, :unfinished,
     pages_attributes: [:id, :position, :image, :image_file_name, :image_content_type, :image_file_size, :image_updated_at, :story_id, :_destroy]
 
 
