@@ -11,7 +11,6 @@ class Story < ActiveRecord::Base
   enum rating: [:green, :yellow, :red, :blue]
 
   scope :rating, -> (rating_text) { where(rating: Story.ratings[rating_text]) }
-  scope :starts_with, -> (name) { where("name like ?", "#{name}%")}
   scope :alphabetical, -> { order("name ASC") }
   scope :recent, ->(num) { order('updated_at DESC').limit(num) }
   scope :with_pages, -> { where("(select count(*) from pages where story_id=stories.id) > 0") }
@@ -23,8 +22,15 @@ class Story < ActiveRecord::Base
     :size => { :in => 0..5.megabytes }
   validates :name, presence: true, uniqueness: true
 
+  def page_count
+    page_count = pages.count
+    page_count += 1 if self.blue?
+    page_count += 1 if self.unfinished?
+    page_count
+  end
+
   def length_category
-    case pages.count
+    case page_count
     when 0
       "empty"
     when 1
@@ -39,4 +45,5 @@ class Story < ActiveRecord::Base
       "epic"
     end
   end
+
 end
