@@ -104,6 +104,9 @@ footer
   width: 50%
   .icon-prev,
   .icon-next
+    @include border-radius(50%)
+    border: solid 2px white
+    line-height: 0
     display: none
   .icon-prev
     left: 1em
@@ -117,8 +120,6 @@ footer
       display: block
       background: black
       color: white
-      @include border-radius(50%)
-      border: solid 2px white
 
 .carousel-control.left
   background: none

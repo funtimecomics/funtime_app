@@ -14,3 +14,12 @@ jQuery ->
   	new_active_page = $('ol.pages li[data-slide-to="' + active_page_index + '"]')
   	$('ol.pages li').removeClass("active")
   	new_active_page.addClass("active")
+  
+  
+  $(document).keydown (e) ->
+    switch e.which
+      when 37 #left arrow
+        $('#carousel-pages').carousel('prev')
+      when 39, 32 #right arrow, space
+        $('#carousel-pages').carousel('next')
+    return
