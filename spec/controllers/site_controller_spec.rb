@@ -7,28 +7,28 @@ describe SiteController, :type => :controller do
       it "includes stories with pages" do
         page = FactoryGirl.create(:page)
         get :index
-        assigns(:recent_stories).should include(page.story)
+        expect(assigns(:recent_stories)).to include(page.story)
       end
       it "excludes stories with no pages" do
         story = FactoryGirl.create(:story)
         get :index
-        assigns(:recent_stories).should_not include(story)
+        expect(assigns(:recent_stories)).not_to include(story)
       end
     end
     it "renders the :index view" do
       get :index
-      response.should render_template :index
+      expect(response).to render_template :index
     end
   end
   describe "GET #index" do
     it "populates an array of people" do
       person = FactoryGirl.create(:person)
       get :index
-      assigns(:people).should eq([person])
+      expect(assigns(:people)).to eq([person])
     end
     it "renders the :index view" do
       get :index
-      response.should render_template :index
+      expect(response).to render_template :index
     end
   end
 end

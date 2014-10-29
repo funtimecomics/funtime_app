@@ -6,23 +6,23 @@ describe PeopleController, :type => :controller do
     it "populates an array of people" do
       person = FactoryGirl.create(:person)
       get :index
-      assigns(:people).should eq([person])
+      expect(assigns(:people)).to eq([person])
     end
     it "renders the :index view" do
       get :index
-      response.should render_template :index
+      expect(response).to render_template :index
     end
   end
   describe "GET #show" do
     it "assigns the requested person to @person" do
       person = FactoryGirl.create(:person)
       get :show, id: person.id
-      assigns(:person).should eq(person)
+      expect(assigns(:person)).to eq(person)
     end
     it "renders the :show view" do
       person = FactoryGirl.create(:person)
       get :show, id: person.id
-      response.should render_template :show
+      expect(response).to render_template :show
     end
   end
 end
