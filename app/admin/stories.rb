@@ -45,20 +45,19 @@ ActiveAdmin.register Story do
   end
 
   form do |f|
-    f.inputs 'Story', class: 'inputs story' do
+    f.inputs t('admin.story.form_title'), class: 'inputs story' do
       f.semantic_errors(*f.object.errors.keys)
       f.input :name
       f.input :rating, as: :select, collection: Story.ratings.keys
       f.input :cover_image,
               image_preview: true,
-              hint: 'Cover image should be square,
-                    and will be resized to 300 by 300 pixels'
+              hint: t('admin.story.cover_image_hint')
       f.input :people, as: :select, collection: Person.alphabetical
       f.input :unfinished
       f.input :description, as: :html_editor
     end
     f.actions
-    f.inputs 'Pages', class: 'inputs story_pages' do
+    f.inputs t('admin.story_pages.form_title'), class: 'inputs story_pages' do
       f.has_many :pages,
                  for: [:pages, f.object.pages.ordered],
                  allow_destroy: true,
@@ -71,7 +70,7 @@ ActiveAdmin.register Story do
                  label: 'Page Number'
         pf.input :image,
                  image_preview: true,
-                 hint: 'Page images will be resized to a width of 945 pixels'
+                 hint: t('admin.page.image_hint')
       end
     end
   end

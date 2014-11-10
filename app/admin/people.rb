@@ -20,7 +20,7 @@ ActiveAdmin.register Person do
   end
 
   form html: { enctype: 'multipart/form-data' } do |f|
-    f.inputs 'Person', multipart: true do
+    f.inputs t('admin.person.form_title'), multipart: true do
       f.semantic_errors(*f.object.errors.keys)
       f.input :name
       f.input :image
@@ -44,7 +44,7 @@ ActiveAdmin.register Person do
 
   # Add New Person button to show page, for quick editing
   action_item only: [:show] do
-    link_to 'New Person', new_admin_person_path
+    link_to t('admin.person.new'), new_admin_person_path
   end
 
   # Return to index after create, update

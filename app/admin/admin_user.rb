@@ -12,7 +12,7 @@ ActiveAdmin.register AdminUser do
   filter :email
 
   form do |f|
-    f.inputs 'Admin Details' do
+    f.inputs t('admin.user.form_title') do
       f.semantic_errors(*f.object.errors.keys)
       f.input :email
       f.input :password
