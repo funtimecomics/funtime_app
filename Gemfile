@@ -28,7 +28,6 @@ group :development, :test do
 end
 
 group :development do
-  gem 'rubocop', require: false
   gem 'pry-remote'
   gem 'rails_best_practices'
   gem 'better_errors'
@@ -37,6 +36,7 @@ group :development do
   gem 'bullet'
   gem 'brakeman', require: false
   gem 'rubocop', require: false
+  gem "rubycritic", :require => false
 end
 
 group :test do
