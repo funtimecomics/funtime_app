@@ -51,7 +51,8 @@ ActiveAdmin.register Story do
       f.input :rating, as: :select, collection: Story.ratings.keys
       f.input :cover_image,
               image_preview: true,
-              hint: 'Cover image should be square, and will be resized to 300 by 300 pixels'
+              hint: 'Cover image should be square,
+                    and will be resized to 300 by 300 pixels'
       f.input :people, as: :select, collection: Person.alphabetical
       f.input :unfinished
       f.input :description, as: :html_editor
