@@ -18,3 +18,10 @@ en:
       form_title: 'Pages'
     user:
       form_title: 'Admin User'
+  story:
+    rating:
+      green: 'This story should be suitable for all ages'
+      yellow: 'This story may not be suitable for young children'
+      red: 'This story is suitable for adults'
+      blue: 'This story contains material some adults may find objectionable'
+      unrated: "This story hasn't been rated for age-appropriateness"

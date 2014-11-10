@@ -38,12 +38,12 @@ class Story < ActiveRecord::Base
 
   def length_category
     case page_count
-    when 0 then 'empty'
-    when 1 then 'one_page'
-    when 2..7 then 'short'
-    when 8..15 then 'medium'
-    when 16..31 then 'long'
-    else; 'epic'
+    when 0 then :empty
+    when 1 then :one_page
+    when 2..7 then :short
+    when 8..15 then :medium
+    when 16..31 then :long
+    else; :epic
     end
   end
 

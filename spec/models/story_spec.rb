@@ -87,6 +87,6 @@ end
 
 def add_pages(story, num_stories)
   (1..num_stories).each do |position|
-    FactoryGirl.create(:page, story: story, position: i)
+    FactoryGirl.create(:page, story: story, position: position)
   end
 end

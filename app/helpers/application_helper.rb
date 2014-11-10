@@ -15,14 +15,12 @@ module ApplicationHelper
   end
 
   def rating_info(story)
-    case story.rating
-    when 'green' then 'This story should be suitable for all ages'
-    when 'yellow' then 'This story may not be suitable for young children'
-    when 'red' then 'This story is suitable for adults'
-    when 'blue'
-      'This story contains material some adults may find objectionable'
-    else
-      'This story hasn\'t been rated for age-appropriateness'
+    case story.rating.to_sym
+    when :green then t('story.rating.green')
+    when :yellow then t('story.rating.yellow')
+    when :red then t('story.rating.red')
+    when :blue then t('story.rating.blue')
+    else t('story.rating.unrated')
     end
   end
 end
