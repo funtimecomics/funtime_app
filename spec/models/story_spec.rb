@@ -2,23 +2,23 @@
 require 'spec_helper'
 
 describe Story do
-  it "has a valid factory" do
+  it 'has a valid factory' do
     story = FactoryGirl.create(:story)
     expect(story).to be_valid
   end
-  it "is invalid without an image" do
+  it 'is invalid without an image' do
     story = FactoryGirl.build(:story, cover_image_file_name: nil)
     expect(story).not_to be_valid
   end
-  it "is invalid with a non-image MIME type" do
+  it 'is invalid with a non-image MIME type' do
     story = FactoryGirl.build(:story, cover_image_content_type: 'audio/mp4')
     expect(story).not_to be_valid
   end
-  it "is valid with a MIME type image/jpeg" do
+  it 'is valid with a MIME type image/jpeg' do
     story = FactoryGirl.build(:story, cover_image_content_type: 'image/jpeg')
     expect(story).to be_valid
   end
-  it "is valid with a MIME type image/jpg" do
+  it 'is valid with a MIME type image/jpg' do
     story = FactoryGirl.build(:story, cover_image_content_type: 'image/jpg')
     expect(story).to be_valid
   end
@@ -26,16 +26,16 @@ describe Story do
     story = FactoryGirl.build(:story, cover_image_file_size: 10.megabytes)
     expect(story).not_to be_valid
   end
-  it "is invalid without a name" do
+  it 'is invalid without a name' do
     story = FactoryGirl.build(:story, name: nil)
     expect(story).not_to be_valid
   end
-  it "does not allow duplicate names" do
+  it 'does not allow duplicate names' do
     FactoryGirl.create(:story, name: 'foo')
     story = FactoryGirl.build(:story, name: 'foo')
     expect(story).not_to be_valid
   end
-  
+
   describe '#page_count' do
     before :each do
       @story = FactoryGirl.create(:story)
@@ -53,7 +53,7 @@ describe Story do
       expect(@story.page_count).to eq 2
     end
   end
-  
+
   describe '#length_category' do
     before :each do
       @story = FactoryGirl.create(:story)
@@ -82,12 +82,11 @@ describe Story do
       expect(@story.length_category).to eq 'epic'
     end
 
-
   end
 end
 
 def add_pages(story, n)
-  for i in 1..n do
+  (1..n).each do |i|
     FactoryGirl.create(:page, story: story, position: i)
   end
 end

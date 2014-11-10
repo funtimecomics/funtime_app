@@ -1,3 +1,4 @@
+# Front-end controller for people
 class PeopleController < InheritedResources::Base
   # GET /people
   # GET /people.json

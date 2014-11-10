@@ -1,0 +1,12 @@
+# This is the configuration used to check the rubocop source code.
+
+AllCops:
+  Include:
+    - '**/Rakefile'
+    - '**/config.ru'
+  Exclude:
+    - 'db/**/*'
+    - 'config/**/*'
+    - 'script/**/*'
+    - 'vendor/**/*'
+    - 'spec/fixtures/**/*'

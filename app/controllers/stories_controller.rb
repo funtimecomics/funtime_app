@@ -1,9 +1,9 @@
+# Front-end controller for stories
 class StoriesController < InheritedResources::Base
   # GET /stories
   # GET /stories.json
   def index
-    @stories = Story.filter(params.slice(:rating, :starts_with))
-    @stories = @stories.with_pages.alphabetical.page params[:page]
+    @stories ||= stories
     @rating = params[:rating]
     @starts_with = params[:starts_with]
     respond_to do |format|
@@ -22,5 +22,12 @@ class StoriesController < InheritedResources::Base
       format.html # show.html.erb
       format.json { render json: @story }
     end
+  end
+
+  private
+
+  def stories
+    stories = Story.filter(params.slice(:rating, :starts_with))
+    stories.with_pages.alphabetical.page params[:page]
   end
 end

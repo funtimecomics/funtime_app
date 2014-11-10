@@ -1,7 +1,24 @@
 ActiveAdmin.register Story do
-  permit_params :cover_image, :cover_image_file_name, :cover_image_content_type, :cover_image_file_size, :cover_image_updated_at, :name, :story_pages, {person_ids: []}, :description, :rating, :unfinished,
-    pages_attributes: [:id, :position, :image, :image_file_name, :image_content_type, :image_file_size, :image_updated_at, :story_id, :_destroy]
-
+  permit_params :cover_image,
+                :cover_image_file_name,
+                :cover_image_content_type,
+                :cover_image_file_size,
+                :cover_image_updated_at,
+                :name,
+                :story_pages,
+                { person_ids: [] },
+                :description,
+                :rating,
+                :unfinished,
+                pages_attributes: [:id,
+                                   :position,
+                                   :image,
+                                   :image_file_name,
+                                   :image_content_type,
+                                   :image_file_size,
+                                   :image_updated_at,
+                                   :story_id,
+                                   :_destroy]
 
   index do
     selectable_column
@@ -9,7 +26,7 @@ ActiveAdmin.register Story do
       content_tag :h3, story.name
     end
     column :cover_image do |story|
-      image_tag( story.cover_image.url(:thumb) )
+      image_tag(story.cover_image.url(:thumb))
     end
     column :rating do |story|
       story.rating
@@ -28,20 +45,32 @@ ActiveAdmin.register Story do
   end
 
   form do |f|
-    f.inputs "Story", class: "inputs story" do
-      f.semantic_errors *f.object.errors.keys
+    f.inputs 'Story', class: 'inputs story' do
+      f.semantic_errors(*f.object.errors.keys)
       f.input :name
       f.input :rating, as: :select, collection: Story.ratings.keys
-      f.input :cover_image, :image_preview => true, hint: "Cover image should be square, and will be resized to 300 by 300 pixels"
+      f.input :cover_image,
+              image_preview: true,
+              hint: 'Cover image should be square, and will be resized to 300 by 300 pixels'
       f.input :people, as: :select, collection: Person.alphabetical
       f.input :unfinished
       f.input :description, as: :html_editor
     end
     f.actions
-    f.inputs "Pages", class: "inputs story_pages" do
-      f.has_many :pages, for: [:pages, f.object.pages.ordered], :allow_destroy => true, :new_record => true, heading: false do |pf|
-        pf.input :position, input_html: {value: pf.object.position || f.object.pages.count + 1}, label: "Page Number"
-        pf.input :image, :image_preview => true, hint: "Page images will be resized to a width of 945 pixels"
+    f.inputs 'Pages', class: 'inputs story_pages' do
+      f.has_many :pages,
+                 for: [:pages, f.object.pages.ordered],
+                 allow_destroy: true,
+                 new_record: true,
+                 heading: false do |pf|
+        pf.input :position,
+                 input_html: {
+                   value: pf.object.position || f.object.pages.count + 1
+                 },
+                 label: 'Page Number'
+        pf.input :image,
+                 image_preview: true,
+                 hint: 'Page images will be resized to a width of 945 pixels'
       end
     end
   end
@@ -58,12 +87,12 @@ ActiveAdmin.register Story do
       row :people do
         story.people.alphabetical.map do |p|
           link_to p.name, admin_person_path(p)
-        end.join(" ").html_safe
+        end.join(' ').html_safe
       end
       row :pages do
         story.pages.ordered.map do |p|
           image_tag p.image.url(:thumb)
-        end.join(" ").html_safe
+        end.join(' ').html_safe
       end
     end
     # active_admin_comments
@@ -71,7 +100,7 @@ ActiveAdmin.register Story do
 
   # Add New Story button to show page, for quick editing
   action_item only: [:show] do
-    link_to "New Story", new_admin_story_path
+    link_to 'New Story', new_admin_story_path
   end
 
   # Return to index after create, update
@@ -80,28 +109,33 @@ ActiveAdmin.register Story do
       @story = Story.new(permitted_params[:story])
       respond_to do |format|
         if @story.save
-          format.html { redirect_to admin_stories_url, notice: 'Story was successfully created.' }
+          format.html do
+            redirect_to admin_stories_url, notice: 'Story successfully created.'
+          end
         else
-          format.html { render action: "new" }
+          format.html { render action: 'new' }
         end
       end
     end
+
     def update
       @story = Story.friendly.find(params[:id])
       respond_to do |format|
         if @story.update_attributes(permitted_params[:story])
-          format.html { redirect_to admin_stories_url, notice: 'Story was successfully updated.' }
+          format.html do
+            redirect_to admin_stories_url, notice: 'Story successfully updated.'
+          end
         else
-          format.html { render action: "edit" }
+          format.html { render action: 'edit' }
         end
       end
     end
   end
 
-  collection_action :sort, :method => :post do
+  collection_action :sort, method: :post do
     params[:pages].each_with_index do |id, index|
-      Page.update_all(['position=?', index+1], ['id=?', id])
+      Page.update_all(['position=?', index + 1], ['id=?', id])
     end
-    render :nothing => true
+    render nothing: true
   end
 end

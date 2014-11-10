@@ -1,11 +1,11 @@
-ActiveAdmin.register_page "Dashboard" do
+ActiveAdmin.register_page 'Dashboard' do
 
-  menu priority: 1, label: proc{ I18n.t("active_admin.dashboard") }
+  menu priority: 1, label: proc { I18n.t('active_admin.dashboard') }
 
-  content :title => proc{ I18n.t("active_admin.dashboard") } do
+  content title: proc { I18n.t('active_admin.dashboard') } do
     columns do
       column do
-        panel "Recent Stories" do
+        panel 'Recent Stories' do
           ul do
             Story.recent(10).map do |story|
               li link_to(story.name, admin_story_path(story))
@@ -14,7 +14,7 @@ ActiveAdmin.register_page "Dashboard" do
         end
       end
       column do
-        panel "Recent Artists" do
+        panel 'Recent Artists' do
           ul do
             Person.recent(10).map do |person|
               li link_to(person.name, admin_person_path(person))

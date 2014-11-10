@@ -56,5 +56,15 @@
                       .person-image.thumb
                         = image_tag person.image.url(:thumb)
                       = person.name
-= ""
+        .row.related_stories
+          .col-md-12
+            %h3 More by the same creators
+            .stories
+              - Story.by_same_creators(@story).each do |story|
+                %li.story
+                  = link_to story do
+                    .story-image.thumb
+                      = image_tag story.cover_image.url(:thumb)
+                    = story.name
+
 = render partial: "site/footer"
