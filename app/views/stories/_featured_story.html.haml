@@ -4,10 +4,15 @@
       = link_to featured_story do
         .thumbnail
           = image_tag featured_story.cover_image.url(:medium)
+        = badge(featured_story)      
     .col-md-6.col-sm-6.col-xs-6
       %h3
         = rating_dot(featured_story)
         = link_to featured_story do
           = truncate(featured_story.name, length: 140)
       .creators
-        = featured_story.people.map{|creator| link_to creator.name, creator}.join(', ').html_safe
+        = creator_list(featured_story.people)
+      - unless featured_story.description.blank?
+        .description
+          = featured_story.description.html_safe
+      

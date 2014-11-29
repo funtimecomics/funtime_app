@@ -20,7 +20,7 @@
                 .item.active.warning_page
                   %h2 Warning
                   This story is rated blue, and is suitable for adults only.
-              - @story.pages.ordered.each_with_index do |page, i|
+              - @pages.each_with_index do |page, i|
                 .item{:class => ("active" if i==0 && !@story.blue?)}
                   = image_tag page.image.url(:original), class: "img-responsive"
               - if @story.unfinished?
@@ -39,7 +39,7 @@
         - unless @story.page_count == 1
           .row
             .col-md-12
-              = render partial: "pages/pages", object: @story.pages.ordered, locals: {story: @story}
+              = render partial: "pages/pages", object: @pages, locals: {story: @story}
         .row
           .col-md-12
             - if @story.description?
