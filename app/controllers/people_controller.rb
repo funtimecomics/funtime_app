@@ -15,7 +15,7 @@ class PeopleController < InheritedResources::Base
   # GET /people/1.json
   def show
     @person = Person.friendly.find(params[:id])
-    @stories = @person.stories.with_pages.alphabetical
+    @stories = @person.stories.with_pages.alphabetical.includes(:people)
 
     respond_to do |format|
       format.html # show.html.erb

@@ -44,7 +44,7 @@ ActiveAdmin.register Story do
     actions
   end
 
-  form do |f|
+  form html: {multipart: true} do |f|
     f.inputs t('admin.story.form_title'), class: 'inputs story' do
       f.semantic_errors(*f.object.errors.keys)
       f.input :name
@@ -68,9 +68,15 @@ ActiveAdmin.register Story do
                    value: pf.object.position || f.object.pages.count + 1
                  },
                  label: 'Page Number'
-        pf.input :image,
-                 image_preview: true,
-                 hint: t('admin.page.image_hint')
+        # pf.input :image,
+        #          image_preview: true,
+        #          hint: t('admin.page.image_hint')
+        pf.input :image, 
+                  as: :file,
+                  image_preview: true,
+                  hint: t('admin.page.image_hint')
+                  #  hint: (f.template.image_tag(f.object.image.url(:thumb)) if f.object.image?)
+        
       end
     end
   end

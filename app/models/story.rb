@@ -54,4 +54,16 @@ class Story < ActiveRecord::Base
     end
     related_stories.flatten.uniq
   end
+  
+  def badge
+    month_ago = 1.month.ago.utc
+    if created_at > month_ago
+      :new
+    elsif pages.last(2).all?{|page| page.created_at > month_ago}
+      :new_pages
+    elsif pages.last.created_at > month_ago
+      :new_page
+    end
+  end
+  
 end

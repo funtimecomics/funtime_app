@@ -5,12 +5,10 @@
     %h4
       = rating_dot(story)
       = truncate(story.name, length: 30)
+    = badge(story)     
+  .creators
+    = creator_list(story.people, person)
+  
 
-  - if person
-    - coauthors = story.people.delete_if{|p| p ==person}
-    - if coauthors.count < 3
-      (with
-      = coauthors.map{|coauthor| link_to coauthor.name, people_path(coauthor)}.join(", ").html_safe
-      )
-    - else
-      (with others)
+
+  

@@ -6,6 +6,7 @@ en:
     dashboard:
       recent_artists: 'Recent Artists'
       recent_stories: 'Recent Stories'
+      things_to_do: 'Things to do'
     page:
       image_hint: 'Page images will be resized to a width of 945 pixels'
     person:
@@ -19,6 +20,10 @@ en:
     user:
       form_title: 'Admin User'
   story:
+    badge:
+      new_page: 'New Page!'
+      new_pages: 'New Pages!'
+      new: 'New Story!'
     rating:
       green: 'This story should be suitable for all ages'
       yellow: 'This story may not be suitable for young children'

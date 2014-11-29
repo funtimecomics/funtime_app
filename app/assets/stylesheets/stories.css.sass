@@ -4,8 +4,8 @@
 .story,
 .featured_story
   float: left
-  margin-bottom: 2em
   list-style: none
+  position: relative
   .thumbnail
     position: relative
     margin: 0 auto
@@ -26,18 +26,37 @@
     @include box-shadow(#aaaaaa 8px 8px 0)
   a
     width: 100%
+  h4
+    margin-bottom: 0
+  .badge
+    @include border-radius(1em)
+    background: #AF0012
+    color: white
+    font-family: 'Mouse Memoirs', sans-serif
+    letter-spacing: 1px
+    padding: 0.5em 1em
+    position: absolute
 .story
   text-align: center
   height: 130px
+  margin-bottom: 4em
   .thumbnail
     width: 100px
     height: 100px
+  .badge
+    right: 1.5em
+    top: 65px
 .featured_story
   text-align: left
   height: 230px
+  margin-bottom: 2em
   .thumbnail
     width: 200px
     height: 200px
+  .badge
+    bottom: 0.5em
+    font-size: 1.25em
+    right: 0
 
 .rating
   display: inline-block

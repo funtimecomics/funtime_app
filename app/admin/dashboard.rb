@@ -22,6 +22,20 @@ ActiveAdmin.register_page 'Dashboard' do
           end
         end
       end
+      column do
+        panel t('admin.dashboard.things_to_do') do
+          ul do
+            Person.alphabetical.select{|p| !p.image.exists?}.map do |person|
+              li link_to(person.name, edit_admin_person_path(person)) + ' needs an image'
+            end
+          end
+          ul do
+            Story.alphabetical.rating(nil).map do |story|
+              li link_to(story.name, edit_admin_story_path(story)) + ' needs a rating'
+            end
+          end
+        end
+      end
     end
   end # content
 end
