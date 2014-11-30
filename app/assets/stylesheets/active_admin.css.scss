@@ -30,10 +30,12 @@
 
 body.active_admin {
   form#edit_story {
+      fieldset:nth-child(2),
       fieldset.story {
         float: left;
         margin-right: 30px;
       }
+      fieldset:nth-child(4),
       fieldset.story_pages {
         li.number,
         li.boolean {
