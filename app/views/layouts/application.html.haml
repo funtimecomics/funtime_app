@@ -41,10 +41,9 @@
             = nav_link "People", people_path
             = nav_link "Workshops", "/workshops"
             = nav_link "Submissions", "/submissions"
-
-    .container
-      - flash.each do |name, msg|
-        = content_tag :div, msg, class: name
+            
+        - flash.each do |name, msg|
+          = content_tag :div, msg, class: name
 
     = yield
 
