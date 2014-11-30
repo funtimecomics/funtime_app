@@ -1,11 +1,11 @@
 %li.featured_story.col-md-6.col-sm-12.col-xs-12{class: "length-#{featured_story.length_category}"}
   .row
-    .col-md-6.col-sm-6.col-xs-6
+    .col-md-6.col-sm-6.col-xs-12
       = link_to featured_story do
         .thumbnail
           = image_tag featured_story.cover_image.url(:medium)
         = badge(featured_story)      
-    .col-md-6.col-sm-6.col-xs-6
+    .col-md-6.col-sm-6.col-xs-12
       %h3
         = rating_dot(featured_story)
         = link_to featured_story do
