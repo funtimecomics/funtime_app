@@ -17,7 +17,6 @@ class StoriesController < InheritedResources::Base
   def show
     @story = Story.friendly.find(params[:id])
     @pages = @story.pages.ordered
-    @pages_paginated = @story.pages.ordered.page(params[:page]).per(3)
     @people = @story.people.alphabetical.includes(:stories)
 
     respond_to do |format|
