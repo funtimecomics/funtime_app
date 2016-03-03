@@ -34,7 +34,7 @@ FuntimeApp::Application.configure do
 
   # Expands the lines which load the assets
   config.assets.debug = true
-  
+
   config.after_initialize do
     Bullet.enable = true
     # Bullet.alert = true
@@ -51,4 +51,6 @@ FuntimeApp::Application.configure do
     Bullet.add_footer = true
     # Bullet.stacktrace_includes = [ 'your_gem', 'your_middleware' ]
   end
+
+  config.react.variant = :development
 end

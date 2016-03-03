@@ -1,22 +1,22 @@
 - content_for :title do
-  = @person.name
+  = person.name
 
 %header
   .container
     .row
       .col-md-12
-        %h1= @person.name
+        %h1= person.name
 
 .container
   .row
     .col-md-6
       .person-image.original
-        = image_tag @person.image.url(:original)
+        = image_tag person.image.url(:original)
     .col-md-6
-      = @person.bio.html_safe
+      = person.bio.html_safe
   .row
     .col-md-12
       %h3 Stories
-      = render partial: "stories/stories", object: @stories, locals: {person: @person}
+      = render partial: "stories/stories", object: stories, locals: {person: person}
 
 = render partial: "site/footer"

@@ -1,0 +1,20 @@
+.navbar.navbar-inverse
+  = image_tag "ribbon.svg", class: "ribbon"
+
+  .container
+    .navbar-header
+      %button.navbar-toggle{"data-target" => ".navbar-collapse", "data-toggle" => "collapse", :type => "button"}
+        Menu
+      %a.navbar-brand{:href => "/"}
+        = image_tag "logo.svg", class: "logo"
+    .navbar-collapse.collapse
+      %ul.nav.navbar-nav
+        = nav_link "Home", root_path
+        = nav_link "Stories", stories_path
+        = nav_link "People", people_path
+        = nav_link "Workshops", "/workshops"
+        = nav_link "Submissions", "/submissions"
+        = nav_link "Issue 27", "/issue-27"
+
+    - flash.each do |name, msg|
+      = content_tag :div, msg, class: name

@@ -2,7 +2,6 @@ source 'https://rubygems.org'
 ruby '2.1.2'
 
 gem 'rails', '4.1.4'
-
 gem 'pg'
 
 gem 'active_admin_editor'
@@ -15,11 +14,12 @@ gem 'devise'
 gem 'friendly_id'
 gem 'haml-rails'
 gem 'jquery-rails' # , '~> 2.3.0'
+gem 'kaminari'
+gem 'paperclip' # , '~> 3.0'
 gem 'rails_12factor', group: :production
+gem 'react-rails', '~> 0.13.0.0'
 gem 'sass-rails'
 gem 'uglifier' # , '>= 1.0.3'
-gem 'paperclip' # , '~> 3.0'
-gem 'kaminari'
 
 group :development, :test do
   gem 'pry-rails'

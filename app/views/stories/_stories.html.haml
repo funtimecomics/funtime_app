@@ -1,2 +1,4 @@
 %ul.stories
   = render partial: "stories/story", collection: stories, locals: {person: person ||= nil}
+%h2.subtitle
+  = link_to "See All Stories", stories_path
