@@ -7,8 +7,10 @@
           = link_to "See All Stories", stories_path
       .col-md-10.col-sm-12
         .row
-          .col-md-12
+          .col-md-9
             = render partial: "stories/featured_stories", object: @recent_stories, person: nil
+          .col-md-3.col-sm-12
+            = render partial: "/promo"
         .row
           .col-md-12
             = render partial: "stories/stories", object: @stories, person: nil
