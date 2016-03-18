@@ -59,27 +59,27 @@ describe Story do
       @story = FactoryGirl.create(:story)
     end
     it 'is empty for a 0 page story' do
-      expect(@story.length_category).to eq 'empty'
+      expect(@story.length_category).to eq :empty
     end
     it 'is one_page for a 1 page story' do
       add_pages(@story, 1)
-      expect(@story.length_category).to eq 'one_page'
+      expect(@story.length_category).to eq :one_page
     end
     it 'is short for a 2..7 page story' do
       add_pages(@story, 2)
-      expect(@story.length_category).to eq 'short'
+      expect(@story.length_category).to eq :short
     end
     it 'is medium for a 8..15 page story' do
       add_pages(@story, 8)
-      expect(@story.length_category).to eq 'medium'
+      expect(@story.length_category).to eq :medium
     end
     it 'is long for a 16..31 page story' do
       add_pages(@story, 16)
-      expect(@story.length_category).to eq 'long'
+      expect(@story.length_category).to eq :long
     end
     it 'is epic for a >31 page story' do
       add_pages(@story, 32)
-      expect(@story.length_category).to eq 'epic'
+      expect(@story.length_category).to eq :epic
     end
 
   end

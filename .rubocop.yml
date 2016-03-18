@@ -1,12 +1,26 @@
 # This is the configuration used to check the rubocop source code.
+# See https://github.com/bbatsov/rubocop/blob/master/config/default.yml for info
 
 AllCops:
   Include:
     - '**/Rakefile'
     - '**/config.ru'
   Exclude:
-    - 'db/**/*'
     - 'config/**/*'
+    - 'db/**/*'
     - 'script/**/*'
-    - 'vendor/**/*'
     - 'spec/fixtures/**/*'
+    - 'vendor/**/*'
+  RunRailsCops: true
+
+Style/StringLiterals:
+  EnforcedStyle: double_quotes
+  SupportedStyles:
+    - single_quotes
+    - double_quotes
+
+Style/StringLiteralsInInterpolation:
+  EnforcedStyle: double_quotes
+  SupportedStyles:
+    - single_quotes
+    - double_quotes
