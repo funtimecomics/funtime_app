@@ -6,7 +6,10 @@ ActiveAdmin.register Issue do
                 :cover_image_updated_at,
                 :title,
                 :issue_number,
-                :position
+                :position,
+                :rating
+
+  config.sort_order = "position_asc"
 
   index do
     selectable_column
@@ -16,17 +19,25 @@ ActiveAdmin.register Issue do
     column :cover_image do |issue|
       image_tag(issue.cover_image.url(:thumb))
     end
+    column :rating
     actions
   end
 
+  index as: :grid do |issue|
+    link_to admin_issue_path(issue) do
+      image_tag(issue.cover_image.url(:thumb)) + "<h4>#{issue.title}</h4>".html_safe
+    end
+  end
+
   form html: {multipart: true} do |f|
-    f.inputs t('admin.story.form_title'), class: 'inputs story' do
+    f.inputs t('admin.issue.form_title'), class: 'inputs issue' do
       f.semantic_errors(*f.object.errors.keys)
       f.input :title
+      f.input :rating, as: :select, collection: Issue.ratings.keys
       f.input :issue_number
       f.input :cover_image,
               image_preview: true,
-              hint: t('admin.story.cover_image_hint')
+              hint: t('admin.issue.cover_image_hint')
       f.input :position
     end
     f.actions
@@ -44,7 +55,7 @@ ActiveAdmin.register Issue do
     end
   end
 
-  # Add New Story button to show page, for quick editing
+  # Add New Issue button to show page, for quick editing
   action_item only: [:show] do
     link_to 'New Issue', new_admin_issue_path
   end
@@ -69,7 +80,7 @@ ActiveAdmin.register Issue do
       respond_to do |format|
         if @issue.update_attributes(permitted_params[:issue])
           format.html do
-            redirect_to admin_stories_url, notice: 'Issue successfully updated.'
+            redirect_to admin_issues_url, notice: 'Issue successfully updated.'
           end
         else
           format.html { render action: 'edit' }

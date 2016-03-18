@@ -3,6 +3,7 @@ class Story < ActiveRecord::Base
   extend FriendlyId
   friendly_id :name, use: [:slugged, :history]
   include Filterable
+  include Rateable
 
   has_attached_file :cover_image,
                     styles: { medium: '300x300>', thumb: '100x100>' },
@@ -11,9 +12,6 @@ class Story < ActiveRecord::Base
   accepts_nested_attributes_for :pages, allow_destroy: true
   has_and_belongs_to_many :people
 
-  enum rating: [:green, :yellow, :red, :blue]
-
-  scope :rating, -> (rating_text) { where(rating: Story.ratings[rating_text]) }
   scope :alphabetical, -> { order('name ASC') }
   scope :recent, ->(num) { order('updated_at DESC').limit(num) }
   scope :with_pages, lambda {
@@ -21,7 +19,6 @@ class Story < ActiveRecord::Base
   }
 
   validates_attachment :cover_image,
-                       presence: true,
                        content_type: { content_type: ['image/jpg',
                                                       'image/jpeg',
                                                       'image/gif',
@@ -54,7 +51,7 @@ class Story < ActiveRecord::Base
     end
     related_stories.flatten.uniq
   end
-  
+
   def badge
     month_ago = 1.month.ago.utc
     if created_at > month_ago
@@ -65,5 +62,5 @@ class Story < ActiveRecord::Base
       :new_page
     end
   end
-  
+
 end

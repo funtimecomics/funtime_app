@@ -17,6 +17,9 @@ en:
       form_title: 'Story'
     story_pages:
       form_title: 'Pages'
+    issue:
+      cover_image_hint: 'Cover image should be square, and will be resized to 300 by 300 pixels'
+      form_title: 'Issue'
     user:
       form_title: 'Admin User'
   story:
@@ -30,3 +33,10 @@ en:
       red: 'This story is suitable for adults'
       blue: 'This story contains material some adults may find objectionable'
       unrated: "This story hasn't been rated for age-appropriateness"
+  issue:
+    rating:
+      green: 'This issue should be suitable for all ages'
+      yellow: 'This issue may not be suitable for young children'
+      red: 'This issue is suitable for adults'
+      blue: 'This issue contains material some adults may find objectionable'
+      unrated: "This issue hasn't been rated for age-appropriateness"

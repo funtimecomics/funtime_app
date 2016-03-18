@@ -71,12 +71,12 @@ ActiveAdmin.register Story do
         # pf.input :image,
         #          image_preview: true,
         #          hint: t('admin.page.image_hint')
-        pf.input :image, 
+        pf.input :image,
                   as: :file,
                   image_preview: true,
                   hint: t('admin.page.image_hint')
                   #  hint: (f.template.image_tag(f.object.image.url(:thumb)) if f.object.image?)
-        
+
       end
     end
   end

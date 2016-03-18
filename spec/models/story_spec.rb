@@ -6,10 +6,6 @@ describe Story do
     story = FactoryGirl.create(:story)
     expect(story).to be_valid
   end
-  it 'is invalid without an image' do
-    story = FactoryGirl.build(:story, cover_image_file_name: nil)
-    expect(story).not_to be_valid
-  end
   it 'is invalid with a non-image MIME type' do
     story = FactoryGirl.build(:story, cover_image_content_type: 'audio/mp4')
     expect(story).not_to be_valid

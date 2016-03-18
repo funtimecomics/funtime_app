@@ -3,13 +3,17 @@ class Issue < ActiveRecord::Base
   extend FriendlyId
   friendly_id :title, use: [:slugged, :history]
 
+  include Filterable
+  include Rateable
+
   has_attached_file :cover_image,
-                    styles: { medium: "300x300>", thumb: "100x100>" },
+                    styles: { medium: "500x500>", thumb: "300x300>" },
                     default_url: "/default_images/:style/issue.png"
   has_many :pages
 
+  scope :by_position, -> { order("position ASC") }
+
   validates_attachment :cover_image,
-                       presence: true,
                        content_type: { content_type: ["image/jpg",
                                                       "image/jpeg",
                                                       "image/gif",

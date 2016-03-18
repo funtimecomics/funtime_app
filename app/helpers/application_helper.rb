@@ -14,17 +14,18 @@ module ApplicationHelper
     end
   end
 
-  def rating_info(story)
-    return t('story.rating.unrated') unless story.rating
-    case story.rating.to_sym
-    when :green then t('story.rating.green')
-    when :yellow then t('story.rating.yellow')
-    when :red then t('story.rating.red')
-    when :blue then t('story.rating.blue')
-    else t('story.rating.unrated')
+  def rating_info(rateable)
+    rateable_class = rateable.class.name.downcase
+    return t("#{rateable_class}.rating.unrated") unless rateable.rating
+    case rateable.rating.to_sym
+    when :green then t("#{rateable_class}.rating.green")
+    when :yellow then t("#{rateable_class}.rating.yellow")
+    when :red then t("#{rateable_class}.rating.red")
+    when :blue then t("#{rateable_class}.rating.blue")
+    else t("#{rateable_class}.rating.unrated")
     end
   end
-  
+
   def badge(story)
     if badge_type = story.badge
       content_tag(:span, class: 'badge') do
@@ -32,7 +33,7 @@ module ApplicationHelper
       end
     end
   end
-  
+
   def creator_list(creators, current_creator=nil)
     if current_creator
       creators = creators.to_a.delete_if{|p| p == current_creator}
@@ -49,6 +50,6 @@ module ApplicationHelper
         creators.map{|creator| link_to creator.name, creator}.join(', ').html_safe
       end
     end
-    
+
   end
 end

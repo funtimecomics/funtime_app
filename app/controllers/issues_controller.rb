@@ -27,6 +27,7 @@ class IssuesController < InheritedResources::Base
   private
 
   def issues
-    Issue.all.page params[:page]
+    issues = Issue.filter params.slice(:rating)
+    issues.by_position.page params[:page]
   end
 end

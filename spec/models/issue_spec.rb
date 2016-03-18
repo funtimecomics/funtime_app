@@ -6,10 +6,6 @@ describe Issue do
     issue = FactoryGirl.create(:issue)
     expect(issue).to be_valid
   end
-  it "is invalid without an image" do
-    issue = FactoryGirl.build(:issue, cover_image_file_name: nil)
-    expect(issue).not_to be_valid
-  end
   it "is invalid with a non-image MIME type" do
     issue = FactoryGirl.build(:issue, cover_image_content_type: "audio/mp4")
     expect(issue).not_to be_valid

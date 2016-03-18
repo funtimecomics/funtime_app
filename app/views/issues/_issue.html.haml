@@ -1,5 +1,7 @@
-%li.issue.col-md-2.col-sm-3.col-xs-6
+%li.issue.col-md-3.col-sm-4.col-xs-6
   = link_to issue do
     .issue-image.thumb
       = image_tag issue.cover_image.url(:thumb)
-    = truncate(issue.title, length: 30)
+    %h4
+      = rating_dot(issue)
+      = truncate(issue.title, length: 30)
