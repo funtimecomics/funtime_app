@@ -43,7 +43,7 @@ ActiveAdmin.register Person do
   end
 
   # Add New Person button to show page, for quick editing
-  action_item only: [:show] do
+  action_item(:show) do
     link_to t('admin.person.new'), new_admin_person_path
   end
 

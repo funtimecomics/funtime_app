@@ -4,6 +4,7 @@
         <![CDATA[
         #Background-Circle {
             fill: #B9C818;
+            fill: transparent;
         }
         #Black-Circle-with-Hole {
             fill: #231F20;

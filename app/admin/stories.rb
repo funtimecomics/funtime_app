@@ -71,12 +71,12 @@ ActiveAdmin.register Story do
         # pf.input :image,
         #          image_preview: true,
         #          hint: t('admin.page.image_hint')
-        pf.input :image, 
+        pf.input :image,
                   as: :file,
                   image_preview: true,
                   hint: t('admin.page.image_hint')
                   #  hint: (f.template.image_tag(f.object.image.url(:thumb)) if f.object.image?)
-        
+
       end
     end
   end
@@ -112,9 +112,9 @@ ActiveAdmin.register Story do
   # Return to index after create, update
   controller do
     def create
-      @story = Story.new(permitted_params[:story])
+      story = Story.new(permitted_params[:story])
       respond_to do |format|
-        if @story.save
+        if story.save
           format.html do
             redirect_to admin_stories_url, notice: 'Story successfully created.'
           end
@@ -125,9 +125,9 @@ ActiveAdmin.register Story do
     end
 
     def update
-      @story = Story.friendly.find(params[:id])
+      story = Story.friendly.find(params[:id])
       respond_to do |format|
-        if @story.update_attributes(permitted_params[:story])
+        if story.update_attributes(permitted_params[:story])
           format.html do
             redirect_to admin_stories_url, notice: 'Story successfully updated.'
           end

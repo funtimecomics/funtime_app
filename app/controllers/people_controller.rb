@@ -1,25 +1,36 @@
 # Front-end controller for people
-class PeopleController < InheritedResources::Base
-  # GET /people
-  # GET /people.json
+class PeopleController < ApplicationController
   def index
-    @people = Person.alphabetical.page params[:page]
-
+    people = repo.all.page params[:page]
     respond_to do |format|
-      format.html # index.html.erb
-      format.json { render json: @people }
+      format.html { render_index(people) }
+      format.json { render json: people }
     end
   end
 
-  # GET /people/1
-  # GET /people/1.json
   def show
-    @person = Person.friendly.find(params[:id])
-    @stories = @person.stories.with_pages.alphabetical.includes(:people)
-
+    person = repo.find(params[:id])
     respond_to do |format|
-      format.html # show.html.erb
-      format.json { render json: @person }
+      format.html { render_show(person) }
+      format.json { render json: person }
     end
+  end
+
+  private
+
+  def repo
+    @people_repo ||= PeopleRepo.new
+  end
+
+  def render_index(people)
+    render 'people/index', locals: { people: people }
+  end
+
+  def render_show(person)
+    render 'people/show',
+           locals: {
+             person: person,
+             stories: person.stories.with_pages.alphabetical.includes(:people)
+           }
   end
 end

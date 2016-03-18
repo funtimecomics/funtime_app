@@ -10,5 +10,6 @@
  *= require promo
  *= require static
  *= require active_admin/editor/wysiwyg
+ *= require promo
  *= require_self
 */
