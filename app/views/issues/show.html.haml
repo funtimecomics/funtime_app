@@ -1,0 +1,18 @@
+- content_for :title do
+  = @issue.title
+
+%header
+  .container
+    .row
+      .col-md-12
+        %h1= @issue.title
+
+.container
+  .row
+    .col-md-6
+      .issue-image.original
+        = image_tag @issue.cover_image.url(:original)
+    .col-md-6
+      =# @issue.bio.html_safe
+
+= render partial: "site/footer"

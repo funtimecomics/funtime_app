@@ -1,0 +1,22 @@
+- content_for :title do
+  Issues
+
+%header
+  .container
+    .row
+      .col-md-12
+        %h1 Issues
+.container
+  .row
+    .col-md-12
+      .pagination-wrapper
+        = paginate @issues
+  .row
+    .col-md-12
+      = render partial: "issues/issues", object: @issues
+  .row
+    .col-md-12
+      .pagination-wrapper
+        = paginate @issues
+
+= render partial: "site/footer"

@@ -1,4 +1,6 @@
 FuntimeApp::Application.routes.draw do
+  resources :issues
+
   devise_for :admin_users, ActiveAdmin::Devise.config
 
   resources :people
