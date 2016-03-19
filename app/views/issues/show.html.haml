@@ -6,6 +6,8 @@
     .row
       .col-md-9
         %h1= @issue.title
+        - if @issue.description?
+          = @issue.description.html_safe
         .rating-box
           = rating_dot(@issue)
           = rating_info(@issue)

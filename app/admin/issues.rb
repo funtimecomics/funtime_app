@@ -4,6 +4,7 @@ ActiveAdmin.register Issue do
                 :cover_image_content_type,
                 :cover_image_file_size,
                 :cover_image_updated_at,
+                :description,
                 :issue_number,
                 :position,
                 :purchase_url,
@@ -13,7 +14,7 @@ ActiveAdmin.register Issue do
                 pages_attributes: [:id, :issue_page_number, :issue_id]
 
   config.sort_order = "position_asc"
-
+  
   index do
     selectable_column
     column :issue do |issue|
@@ -40,6 +41,7 @@ ActiveAdmin.register Issue do
     f.inputs t('admin.issue.form_title'), class: 'inputs issue' do
       f.semantic_errors(*f.object.errors.keys)
       f.input :title
+      f.input :description, as: :html_editor
       f.input :rating, as: :select, collection: Issue.ratings.keys
       f.input :issue_number
       f.input :cover_image,

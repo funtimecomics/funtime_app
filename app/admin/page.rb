@@ -1,18 +1,22 @@
 ActiveAdmin.register Page do
   permit_params :id,
-                :image,
-                :image_file_name,
                 :image_content_type,
+                :image_file_name,
                 :image_file_size,
                 :image_updated_at,
-                :story_id,
+                :image,
                 :issue_id,
-                :story_page_number,
-                :issue_page_number
+                :issue_page_number,
+                :description,
+                :story_id,
+                :story_page_number
   index do
     selectable_column
     column :image do |page|
       image_tag page.image.url(:thumb)
+    end
+    column :description do |page|
+      page.description.try(:html_safe)
     end
     column :story do |page|
       story = page.story
@@ -41,6 +45,7 @@ ActiveAdmin.register Page do
       f.input :story_page_number
       f.input :issue, as: :select, collection: Issue.ordered
       f.input :issue_page_number
+      f.input :description, as: :html_editor
     end
     f.actions
   end

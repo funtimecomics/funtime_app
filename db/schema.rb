@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160319063617) do
+ActiveRecord::Schema.define(version: 20160319090117) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -81,6 +81,7 @@ ActiveRecord::Schema.define(version: 20160319063617) do
     t.integer  "rating"
     t.integer  "pages_count"
     t.string   "purchase_url"
+    t.text     "description"
   end
 
   add_index "issues", ["slug"], name: "index_issues_on_slug", using: :btree
@@ -96,6 +97,7 @@ ActiveRecord::Schema.define(version: 20160319063617) do
     t.integer  "story_page_number"
     t.integer  "issue_id"
     t.integer  "issue_page_number"
+    t.text     "description"
   end
 
   add_index "pages", ["story_id"], name: "index_pages_on_story_id", using: :btree
