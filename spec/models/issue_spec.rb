@@ -40,10 +40,4 @@ describe Issue do
     issue = FactoryGirl.build(:issue, position: nil)
     expect(issue).not_to be_valid
   end
-  it "does not allow duplicate positions" do
-    FactoryGirl.create(:issue, position: 3)
-    issue = FactoryGirl.build(:issue, position: 3)
-    expect(issue).not_to be_valid
-  end
-  # TODO: Page positions scoped to story
 end

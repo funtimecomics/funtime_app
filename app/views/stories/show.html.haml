@@ -39,7 +39,7 @@
         - unless @story.page_count == 1
           .row
             .col-md-12
-              = render partial: "pages/pages", object: @pages, locals: {story: @story}
+              = render partial: "pages/pages", object: @pages
         .row
           .col-md-12
             - if @story.description?

@@ -9,10 +9,7 @@ ActiveAdmin.register Issue do
                 :position,
                 :rating,
                 :issue_pages,
-                pages_attributes: [:id,
-                                   :issue_page_number,
-                                   :issue_id]
-
+                pages_attributes: [:id, :issue_page_number, :issue_id]
 
   config.sort_order = "position_asc"
 

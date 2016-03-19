@@ -29,30 +29,6 @@
 // .other_namespace    applies to a custom namespace named other (eg: /other)
 
 body.active_admin {
-  form#edit_story {
-      fieldset:nth-child(2),
-      fieldset.story {
-        float: left;
-        margin-right: 30px;
-      }
-      fieldset:nth-child(4),
-      fieldset.story_pages {
-        li.number,
-        li.boolean {
-          float: right;
-          width: 25%;
-          margin-left: 30px;
-          label {
-            width: 100%;
-          }
-        }
-
-      }
-      fieldset.actions {
-        float: left;
-        clear: left;
-      }
-  }
   form#edit_issue {
     fieldset.issue {
       float: left;
@@ -61,24 +37,33 @@ body.active_admin {
     fieldset.issue_pages {
       float: left;
     }
-    .has_many_container.pages {
-      padding: 10px;
-      .has_many_fields {
-        padding: 0;
-        margin: 0 0 10px 0;
-        .handle {
-          left: 10px;
-        }
+  }
+  form#edit_story {
+    fieldset.story {
+      float: left;
+      margin-right: 30px;
+    }
+    fieldset.story_pages {
+      float: left;
+    }
+  }
+  .has_many_container.pages {
+    padding: 10px;
+    .has_many_fields {
+      padding: 0;
+      margin: 0 0 10px 0;
+      .handle {
+        left: 10px;
       }
-      li {
-        display: block;
-        input {
-          width: 2em;
-          vertical-align: top;
-          background: transparent;
-          border: 0;
-          font-size: 2em;
-        }
+    }
+    li {
+      display: block;
+      input {
+        width: 2em;
+        vertical-align: top;
+        background: transparent;
+        border: 0;
+        font-size: 2em;
       }
     }
   }

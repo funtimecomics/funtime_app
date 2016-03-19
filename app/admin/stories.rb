@@ -10,15 +10,7 @@ ActiveAdmin.register Story do
                 :rating,
                 :unfinished,
                 :story_pages,
-                pages_attributes: [:id,
-                                   :story_page_number,
-                                   :image,
-                                   :image_file_name,
-                                   :image_content_type,
-                                   :image_file_size,
-                                   :image_updated_at,
-                                   :story_id,
-                                   :_destroy]
+                pages_attributes: [:id, :story_page_number, :story_id]
 
   index do
     selectable_column
@@ -44,7 +36,14 @@ ActiveAdmin.register Story do
     actions
   end
 
+  index as: :grid do |story|
+    link_to admin_story_path(story) do
+      image_tag(story.cover_image.url(:thumb)) + "<h4>#{story.name}</h4>".html_safe
+    end
+  end
+
   form html: {multipart: true} do |f|
+    f.actions
     f.inputs t('admin.story.form_title'), class: 'inputs story' do
       f.semantic_errors(*f.object.errors.keys)
       f.input :name
@@ -56,27 +55,15 @@ ActiveAdmin.register Story do
       f.input :unfinished
       f.input :description, as: :html_editor
     end
-    f.actions
     f.inputs t('admin.story_pages.form_title'), class: 'inputs story_pages' do
       f.has_many :pages,
                  for: [:pages, f.object.pages.ordered_for_story],
-                 allow_destroy: true,
-                 new_record: true,
-                 heading: false do |pf|
-        pf.input :story_page_number,
-                 input_html: {
-                   value: pf.object.story_page_number || f.object.pages.count + 1
-                 },
-                 label: 'Page Number'
-        # pf.input :image,
-        #          image_preview: true,
-        #          hint: t('admin.page.image_hint')
-        pf.input :image,
-                  as: :file,
-                  image_preview: true,
-                  hint: t('admin.page.image_hint')
-                  #  hint: (f.template.image_tag(f.object.image.url(:thumb)) if f.object.image?)
-
+                 sortable: :story_page_number,
+                 sortable_start: 1,
+                 heading: false,
+                 allow_destroy: false,
+                 new_record: false do |pf|
+        pf.input :story_page_number, as: :page_sorting, label: false
       end
     end
   end
