@@ -30,6 +30,15 @@ class Issue < ActiveRecord::Base
     Issue.ordered.last
   end
 
+  def badge
+    months_ago = 3.months.ago.utc
+    if created_at > months_ago
+      :new
+    elsif pages.any? { |page| page.created_at > months_ago }
+      :new_pages
+    end
+  end
+
   private
 
   def ensure_position

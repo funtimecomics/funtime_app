@@ -26,10 +26,10 @@ module ApplicationHelper
     end
   end
 
-  def badge(story)
-    if badge_type = story.badge
+  def badge(badgeable)
+    if badge_type = badgeable.badge
       content_tag(:span, class: 'badge') do
-        t("story.badge.#{badge_type}")
+        t("#{badgeable.class.name.downcase}.badge.#{badge_type}")
       end
     end
   end

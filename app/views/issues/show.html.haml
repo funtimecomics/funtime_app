@@ -13,6 +13,7 @@
         .issue
           .issue-image.medium
             = image_tag @issue.cover_image.url(:medium), class: 'img-responsive'
+            = badge(@issue)
 
 .section
   .container

@@ -1,7 +1,9 @@
-%li.issue.col-md-3.col-sm-4.col-xs-6
-  = link_to issue do
-    .issue-image.thumb
-      = image_tag issue.cover_image.url(:thumb)
-    %h4
-      = rating_dot(issue)
-      = truncate(issue.title, length: 30)
+%li.col-md-3.col-sm-4.col-xs-6
+  .issue
+    = link_to issue do
+      .issue-image.thumb
+        = image_tag issue.cover_image.url(:thumb)
+        = badge(issue)
+      %h4
+        = rating_dot(issue)
+        = truncate(issue.title, length: 30)

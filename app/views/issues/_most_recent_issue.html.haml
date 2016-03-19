@@ -1,10 +1,11 @@
 .most_recent_issue
   .issue
-    = link_to most_recent_issue do
+    = link_to issue do
       .issue-image
-        = image_tag most_recent_issue.cover_image.url(:thumb)
-    - if most_recent_issue.purchase_url
+        = image_tag issue.cover_image.url(:thumb)
+        = badge(issue)
+    - if issue.purchase_url
       %h2
-        = link_to "Issue #{most_recent_issue.issue_number} Available Now!", most_recent_issue.purchase_url
+        = link_to "Issue #{issue.issue_number} Available Now!", issue.purchase_url
       %h3
         = link_to "Buy Issues Online", "http://funtimecomics.bigcartel.com"

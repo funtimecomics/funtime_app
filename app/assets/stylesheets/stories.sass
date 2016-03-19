@@ -26,20 +26,12 @@
     @include box-shadow(#aaaaaa 8px 8px 0)
   a
     width: 100%
-  .badge
-    @include border-radius(1em)
-    background: #AF0012
-    color: white
-    font-family: 'Mouse Memoirs', sans-serif
-    letter-spacing: 1px
-    padding: 0.5em 1em
-    position: absolute
 .story
   text-align: center
   height: 130px
   margin-bottom: 4em
   h4
-    margin-bottom: 0  
+    margin-bottom: 0
   .thumbnail
     width: 100px
   .badge
@@ -66,7 +58,16 @@
     text-align: center
     @media screen and (min-width: 768px)
       text-align: left
-    
+
+.badge
+  @include border-radius(1em)
+  background: #AF0012
+  color: white
+  font-family: 'Mouse Memoirs', sans-serif
+  letter-spacing: 1px
+  padding: 0.5em 1em
+  position: absolute
+
 
 .rating
   display: inline-block

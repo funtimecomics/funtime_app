@@ -10,7 +10,7 @@
           .col-md-8
             = render partial: "stories/featured_stories", object: @recent_stories, person: nil
           .col-md-4.col-sm-12
-            = render partial: "issues/most_recent_issue", object: @most_recent_issue
+            = render partial: "issues/most_recent_issue", locals: { issue: @most_recent_issue }
         .row
           .col-md-12
             = render partial: "stories/stories", object: @stories, person: nil

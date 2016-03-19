@@ -36,6 +36,10 @@ en:
       blue: 'This story contains material some adults may find objectionable'
       unrated: "This story hasn't been rated for age-appropriateness"
   issue:
+    badge:
+      new_page: 'New Page!'
+      new_pages: 'New Pages!'
+      new: 'New Issue!'
     rating:
       green: 'This issue should be suitable for all ages'
       yellow: 'This issue may not be suitable for young children'

@@ -14,31 +14,33 @@
     img
       @include border-radius(2px)
       width: 100%
+    .badge
+      bottom: 1em
+      font-size: 1.25em
+      right: -1em
+      z-index: 30
   .issue-image:before,
   .issue-image:after
     position: absolute
-    top: 1%
-    height: 98%
+    top: 0.5%
+    height: 99%
     content: ' '
     z-index: -1
   .issue-image:before
     @include border-radius(2px)
     width: 100%
     left: 2%
-    background-color: #aaaaaa
+    background-color: #cccccc
   .issue-image:after
     width: 1%
     left: 100%
     background-color: #ffffff
-    box-shadow: inset 0px 0px 5px #aaa
-    -moz-transform: rotateY(20deg)
-    -webkit-transform: perspective(100) rotateY(20deg)
+    box-shadow: inset 0px 0px 5px #cccccc
 
 .most_recent_issue
   @include border-radius(0.25em)
   background: black
   display: block
-  overflow: hidden
   text-align: center
   padding: 1em
   margin-bottom: 1em
