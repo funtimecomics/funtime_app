@@ -14,22 +14,7 @@
         - if @story.page_count == 1
           = image_tag @story.pages.first.image.url(:original), class: "img-responsive"
         - else
-          #carousel-pages.carousel.slide
-            .carousel-inner
-              - if @story.blue?
-                .item.active.warning_page
-                  %h2 Warning
-                  This story is rated blue, and is suitable for adults only.
-              - @pages.each_with_index do |page, i|
-                .item{:class => ("active" if i==0 && !@story.blue?)}
-                  = image_tag page.image.url(:original), class: "img-responsive"
-              - if @story.unfinished?
-                .item.to_be_continued
-                  %h2 To be continued&hellip;
-            %a.left.carousel-control{"data-slide" => "prev", :href => "#carousel-pages"}
-              %span.icon-prev
-            %a.right.carousel-control{"data-slide" => "next", :href => "#carousel-pages"}
-              %span.icon-next
+          = render partial: "pages/carousel", locals: {collection: @story}
       .col-md-3
         .row
           .col-md-12

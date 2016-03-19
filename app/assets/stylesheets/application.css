@@ -9,6 +9,6 @@
  *= require screen
  *= require static
  *= require stories
- #= require issues
+ *= require issues
  *= require_self
 */

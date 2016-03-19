@@ -4,10 +4,11 @@ ActiveAdmin.register Issue do
                 :cover_image_content_type,
                 :cover_image_file_size,
                 :cover_image_updated_at,
-                :title,
                 :issue_number,
                 :position,
+                :purchase_url,
                 :rating,
+                :title,
                 :issue_pages,
                 pages_attributes: [:id, :issue_page_number, :issue_id]
 
@@ -44,6 +45,7 @@ ActiveAdmin.register Issue do
       f.input :cover_image,
               image_preview: true,
               hint: t('admin.issue.cover_image_hint')
+      f.input :purchase_url
       f.input :position
     end
     f.inputs t('admin.issue_pages.form_title'), class: 'inputs issue_pages' do

@@ -4,32 +4,22 @@
 %header
   .container
     .row
-      .col-md-3
-        .issue-image.medium
-          = image_tag @issue.cover_image.url(:medium), class: 'img-responsive'
       .col-md-9
         %h1= @issue.title
         .rating-box
           = rating_dot(@issue)
           = rating_info(@issue)
+      .col-md-3
+        .issue
+          .issue-image.medium
+            = image_tag @issue.cover_image.url(:medium), class: 'img-responsive'
 
 .section
   .container
     .row
       .col-md-9
-        #carousel-pages.carousel.slide
-          .carousel-inner
-            - if @issue.blue?
-              .item.active.warning_page
-                %h2 Warning
-                This issue is rated blue, and is suitable for adults only.
-            - @pages.each_with_index do |page, i|
-              .item{:class => ("active" if i==0 && !@issue.blue?)}
-                = image_tag page.image.url(:original), class: "img-responsive"
-          %a.left.carousel-control{"data-slide" => "prev", :href => "#carousel-pages"}
-            %span.icon-prev
-          %a.right.carousel-control{"data-slide" => "next", :href => "#carousel-pages"}
-            %span.icon-next
+        - if @issue.pages.any?
+          = render partial: "pages/carousel", locals: {collection: @issue}
       .col-md-3
         .row
           .col-md-12

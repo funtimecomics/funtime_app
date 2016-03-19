@@ -4,6 +4,7 @@ class SiteController < InheritedResources::Base
   # GET /pages.json
   def index
     @recent_stories = Story.with_pages.recent(4).includes(:people)
+    @most_recent_issue = Issue.most_recent
     @stories = Story.with_pages.recent(24).offset(4).alphabetical.includes(:people)
     @people = Person.recent(24).alphabetical
 

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160318232514) do
+ActiveRecord::Schema.define(version: 20160319063617) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -80,6 +80,7 @@ ActiveRecord::Schema.define(version: 20160318232514) do
     t.string   "slug"
     t.integer  "rating"
     t.integer  "pages_count"
+    t.string   "purchase_url"
   end
 
   add_index "issues", ["slug"], name: "index_issues_on_slug", using: :btree

@@ -1,0 +1,15 @@
+#carousel-pages.carousel.slide
+  .carousel-inner
+    - if collection.blue?
+      .item.active.warning_page
+        %h2 Warning
+        This
+        = collection.class.name.downcase
+        is rated blue, and is suitable for adults only.
+    - collection.pages.each_with_index do |page, i|
+      .item{:class => ("active" if i==0 && !collection.blue?)}
+        = image_tag page.image.url(:original), class: "img-responsive"
+  %a.left.carousel-control{"data-slide" => "prev", :href => "#carousel-pages"}
+    %span.icon-prev
+  %a.right.carousel-control{"data-slide" => "next", :href => "#carousel-pages"}
+    %span.icon-next

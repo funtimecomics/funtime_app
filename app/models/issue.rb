@@ -26,6 +26,10 @@ class Issue < ActiveRecord::Base
 
   before_save :ensure_position
 
+  def self.most_recent
+    Issue.ordered.last
+  end
+
   private
 
   def ensure_position
