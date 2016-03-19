@@ -10,8 +10,9 @@ class Issue < ActiveRecord::Base
                     styles: { medium: "500x500>", thumb: "300x300>" },
                     default_url: "/default_images/:style/issue.png"
   has_many :pages
+  accepts_nested_attributes_for :pages
 
-  scope :by_position, -> { order("position ASC") }
+  scope :ordered, -> { order("position ASC") }
 
   validates_attachment :cover_image,
                        content_type: { content_type: ["image/jpg",

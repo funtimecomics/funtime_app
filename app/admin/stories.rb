@@ -5,13 +5,13 @@ ActiveAdmin.register Story do
                 :cover_image_file_size,
                 :cover_image_updated_at,
                 :name,
-                :story_pages,
                 { person_ids: [] },
                 :description,
                 :rating,
                 :unfinished,
+                :story_pages,
                 pages_attributes: [:id,
-                                   :position,
+                                   :story_page_number,
                                    :image,
                                    :image_file_name,
                                    :image_content_type,
@@ -39,7 +39,7 @@ ActiveAdmin.register Story do
       end
     end
     column :pages do |story|
-      story.pages.ordered.count
+      story.pages.ordered_for_story.count
     end
     actions
   end
@@ -59,13 +59,13 @@ ActiveAdmin.register Story do
     f.actions
     f.inputs t('admin.story_pages.form_title'), class: 'inputs story_pages' do
       f.has_many :pages,
-                 for: [:pages, f.object.pages.ordered],
+                 for: [:pages, f.object.pages.ordered_for_story],
                  allow_destroy: true,
                  new_record: true,
                  heading: false do |pf|
-        pf.input :position,
+        pf.input :story_page_number,
                  input_html: {
-                   value: pf.object.position || f.object.pages.count + 1
+                   value: pf.object.story_page_number || f.object.pages.count + 1
                  },
                  label: 'Page Number'
         # pf.input :image,
@@ -96,7 +96,7 @@ ActiveAdmin.register Story do
         end.join(' ').html_safe
       end
       row :pages do
-        story.pages.ordered.map do |p|
+        story.pages.ordered_for_story.map do |p|
           image_tag p.image.url(:thumb)
         end.join(' ').html_safe
       end
@@ -140,7 +140,7 @@ ActiveAdmin.register Story do
 
   collection_action :sort, method: :post do
     params[:pages].each_with_index do |id, index|
-      Page.update_all(['position=?', index + 1], ['id=?', id])
+      Page.update_all(['story_page_number=?', index + 1], ['id=?', id])
     end
     render nothing: true
   end

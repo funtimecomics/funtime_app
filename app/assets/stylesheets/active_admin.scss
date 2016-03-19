@@ -53,4 +53,33 @@ body.active_admin {
         clear: left;
       }
   }
+  form#edit_issue {
+    fieldset.issue {
+      float: left;
+      margin-right: 30px;
+    }
+    fieldset.issue_pages {
+      float: left;
+    }
+    .has_many_container.pages {
+      padding: 10px;
+      .has_many_fields {
+        padding: 0;
+        margin: 0 0 10px 0;
+        .handle {
+          left: 10px;
+        }
+      }
+      li {
+        display: block;
+        input {
+          width: 2em;
+          vertical-align: top;
+          background: transparent;
+          border: 0;
+          font-size: 2em;
+        }
+      }
+    }
+  }
 }

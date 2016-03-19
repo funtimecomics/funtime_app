@@ -16,7 +16,7 @@ class StoriesController < InheritedResources::Base
   # GET /stories/1.json
   def show
     @story = Story.friendly.find(params[:id])
-    @pages = @story.pages.ordered
+    @pages = @story.pages.ordered_for_story
     @people = @story.people.alphabetical.includes(:stories)
 
     respond_to do |format|
@@ -29,6 +29,6 @@ class StoriesController < InheritedResources::Base
 
   def stories
     stories = Story.filter(params.slice(:rating, :starts_with))
-    stories.with_pages.alphabetical.page params[:page]
+    stories.with_pages.alphabetical.includes(:people).page params[:page]
   end
 end

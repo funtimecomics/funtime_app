@@ -20,6 +20,8 @@ en:
     issue:
       cover_image_hint: 'Cover image should be square, and will be resized to 300 by 300 pixels'
       form_title: 'Issue'
+    issue_pages:
+      form_title: 'Pages'
     user:
       form_title: 'Admin User'
   story:

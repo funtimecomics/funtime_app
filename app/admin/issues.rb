@@ -7,7 +7,12 @@ ActiveAdmin.register Issue do
                 :title,
                 :issue_number,
                 :position,
-                :rating
+                :rating,
+                :issue_pages,
+                pages_attributes: [:id,
+                                   :issue_page_number,
+                                   :issue_id]
+
 
   config.sort_order = "position_asc"
 
@@ -20,6 +25,9 @@ ActiveAdmin.register Issue do
       image_tag(issue.cover_image.url(:thumb))
     end
     column :rating
+    column :pages do |issue|
+      issue.pages.ordered_for_issue.count
+    end
     actions
   end
 
@@ -30,6 +38,7 @@ ActiveAdmin.register Issue do
   end
 
   form html: {multipart: true} do |f|
+    f.actions
     f.inputs t('admin.issue.form_title'), class: 'inputs issue' do
       f.semantic_errors(*f.object.errors.keys)
       f.input :title
@@ -40,7 +49,17 @@ ActiveAdmin.register Issue do
               hint: t('admin.issue.cover_image_hint')
       f.input :position
     end
-    f.actions
+    f.inputs t('admin.issue_pages.form_title'), class: 'inputs issue_pages' do
+      f.has_many :pages,
+                 for: [:pages, f.object.pages.ordered_for_story],
+                 sortable: :issue_page_number,
+                 sortable_start: 1,
+                 heading: false,
+                 allow_destroy: false,
+                 new_record: false do |pf|
+        pf.input :issue_page_number, as: :page_sorting, label: false
+      end
+    end
   end
 
   show do |issue|

@@ -3,12 +3,15 @@ class Page < ActiveRecord::Base
   delegate :name, to: :story, prefix: true
 
   has_attached_file :image,
-                    styles: { original: '945>', thumb: '70>' },
+                    styles: { original: '945>', medium: '300>', thumb: '70>' },
                     default_url: '/images/:style/missing.png'
   belongs_to :story, counter_cache: true, touch: true
-  acts_as_list scope: :story
+  belongs_to :issue, counter_cache: true, touch: true
+  acts_as_list column: :story_page_number, scope: :story, top_of_list: 1
+  acts_as_list column: :issue_page_number, scope: :issue, top_of_list: 1
 
-  scope :ordered, -> { order('position ASC') }
+  scope :ordered_for_story, -> { order('story_page_number ASC') }
+  scope :ordered_for_issue, -> { order('issue_page_number ASC') }
   scope :recent, ->(num) { order('created_at DESC').limit(num) }
 
   validates_attachment :image,
@@ -18,6 +21,4 @@ class Page < ActiveRecord::Base
                                                       'image/gif',
                                                       'image/png'] },
                        size: { in: 0..5.megabytes }
-  validates :position, presence: true, uniqueness: { scope: :story_id }
-  validates :story, presence: true
 end

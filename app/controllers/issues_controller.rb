@@ -3,8 +3,7 @@ class IssuesController < InheritedResources::Base
   # GET /stories.json
   def index
     @issues ||= issues
-    # @rating = params[:rating]
-    # @starts_with = params[:starts_with]
+    @rating = params[:rating]
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @issues }
@@ -15,8 +14,7 @@ class IssuesController < InheritedResources::Base
   # GET /issues/1.json
   def show
     @issue = Issue.friendly.find(params[:id])
-    # @pages = @issue.pages.ordered
-    # @people = @issue.people.alphabetical.includes(:issues)
+    @pages = @issue.pages.ordered_for_issue
 
     respond_to do |format|
       format.html # show.html.erb
@@ -28,6 +26,6 @@ class IssuesController < InheritedResources::Base
 
   def issues
     issues = Issue.filter params.slice(:rating)
-    issues.by_position.page params[:page]
+    issues.ordered.page params[:page]
   end
 end

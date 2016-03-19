@@ -26,14 +26,4 @@ describe Page do
     page = FactoryGirl.build(:page, image_file_size: 10.megabytes)
     expect(page).not_to be_valid
   end
-  it 'is invalid without a position' do
-    page = FactoryGirl.build(:page, position: nil)
-    expect(page).not_to be_valid
-  end
-  it 'does not allow duplicate positions per story' do
-    story = FactoryGirl.create(:story)
-    FactoryGirl.create(:page, story: story, position: 3)
-    page = FactoryGirl.build(:page, story: story, position: 3)
-    expect(page).not_to be_valid
-  end
 end

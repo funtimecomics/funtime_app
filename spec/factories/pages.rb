@@ -5,7 +5,9 @@ FactoryGirl.define do
     image_file_name 'foo.png'
     image_content_type 'image/jpg'
     image_file_size 2.megabytes
-    position 1
+    story_page_number 1
     story
+    issue_page_number 1
+    issue
   end
 end

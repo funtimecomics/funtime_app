@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160318201858) do
+ActiveRecord::Schema.define(version: 20160318232514) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -79,6 +79,7 @@ ActiveRecord::Schema.define(version: 20160318201858) do
     t.datetime "updated_at"
     t.string   "slug"
     t.integer  "rating"
+    t.integer  "pages_count"
   end
 
   add_index "issues", ["slug"], name: "index_issues_on_slug", using: :btree
@@ -91,7 +92,9 @@ ActiveRecord::Schema.define(version: 20160318201858) do
     t.string   "image_content_type"
     t.integer  "image_file_size"
     t.datetime "image_updated_at"
-    t.integer  "position"
+    t.integer  "story_page_number"
+    t.integer  "issue_id"
+    t.integer  "issue_page_number"
   end
 
   add_index "pages", ["story_id"], name: "index_pages_on_story_id", using: :btree
