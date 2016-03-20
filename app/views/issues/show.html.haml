@@ -22,7 +22,7 @@
     .row
       .col-md-9
         - if @issue.pages.any?
-          = render partial: "pages/carousel", locals: {collection: @issue}
+          = render partial: "pages/carousel", locals: {collection_name: "issue", show_warning: @issue.blue?, pages: @pages}
       .col-md-3
         .row
           .col-md-12

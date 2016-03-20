@@ -21,4 +21,8 @@ class Page < ActiveRecord::Base
                                                       'image/gif',
                                                       'image/png'] },
                        size: { in: 0..5.megabytes }
+
+  def image_url
+    image.url(:original)
+  end
 end

@@ -14,7 +14,7 @@
         - if @story.page_count == 1
           = image_tag @story.pages.first.image.url(:original), class: "img-responsive"
         - else
-          = render partial: "pages/carousel", locals: {collection: @story}
+          = render partial: "pages/carousel", locals: {collection_name: "story", show_warning: @story.blue?, pages: @pages}
       .col-md-3
         .row
           .col-md-12

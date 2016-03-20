@@ -31,7 +31,7 @@ ActiveAdmin.register Story do
       end
     end
     column :pages do |story|
-      story.pages.ordered_for_story.count
+      story.pages.count
     end
     actions
   end

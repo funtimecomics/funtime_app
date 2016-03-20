@@ -5,6 +5,7 @@ FuntimeApp::Application.routes.draw do
 
   resources :people
   resources :stories, only: [:index, :show]
+  resources :pages, only: [:show]
 
   root to: 'site#index'
 
