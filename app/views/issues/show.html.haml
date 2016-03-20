@@ -12,10 +12,7 @@
           = rating_dot(@issue)
           = rating_info(@issue)
       .col-md-3
-        .issue
-          .issue-image.medium
-            = image_tag @issue.cover_image.url(:medium), class: 'img-responsive'
-            = badge(@issue)
+        = render partial: "issues/featured_issue", locals: { issue: @issue }
 
 .section
   .container
@@ -24,14 +21,5 @@
         - if @issue.pages.any?
           = render partial: "pages/carousel", locals: {collection_name: "issue", show_warning: @issue.blue?, pages: @pages}
       .col-md-3
-        .row
-          .col-md-12
-            = render partial: "pages/pages", object: @pages
-
-        -# .row
-        -#   .col-md-12
-        -#     - if @issue.description?
-        -#       .description
-        -#         = @issue.description.html_safe
-
+        = render partial: "pages/pages", object: @pages
 = render partial: "site/footer"

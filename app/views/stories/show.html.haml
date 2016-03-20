@@ -1,14 +1,14 @@
 - content_for :title do
   = @story.name
 
-%header
-  .container
-    .row
-      .col-md-12
-        %h1= @story.name
-
 .section
   .container
+    %header
+      %h1.story_title
+        = @story.name
+      .rating-box
+        = rating_dot(@story)
+        = rating_info(@story)
     .row
       .col-md-9
         - if @story.page_count == 1
@@ -16,11 +16,6 @@
         - else
           = render partial: "pages/carousel", locals: {collection_name: "story", show_warning: @story.blue?, pages: @pages}
       .col-md-3
-        .row
-          .col-md-12
-            .rating-box
-              = rating_dot(@story)
-              = rating_info(@story)
         - unless @story.page_count == 1
           .row
             .col-md-12
@@ -30,26 +25,26 @@
             - if @story.description?
               .description
                 = @story.description.html_safe
-        .row.creators
-          .col-md-12
-            %h2 Creators
-            .people
-              %ul.people
-                - @people.each do |person|
-                  %li.person
-                    = link_to person do
-                      .person-image.thumb
-                        = image_tag person.image.url(:thumb)
-                      = person.name
-        .row.related_stories
-          .col-md-12
-            %h3 More by the same creators
-            .stories
-              - Story.by_same_creators(@story).each do |story|
-                %li.story
-                  = link_to story do
-                    .story-image.thumb
-                      = image_tag story.cover_image.url(:thumb)
-                    = story.name
+    .row.creators
+      .col-md-12
+        %h2 Creators
+        .people
+          %ul.people
+            - @people.each do |person|
+              %li.person
+                = link_to person do
+                  .person-image.thumb
+                    = image_tag person.image.url(:thumb)
+                  = person.name
+    .row.related_stories
+      .col-md-12
+        %h3 More by the same creators
+        .stories
+          - Story.by_same_creators(@story).each do |story|
+            %li.story
+              = link_to story do
+                .story-image.thumb
+                  = image_tag story.cover_image.url(:thumb)
+                = story.name
 
 = render partial: "site/footer"

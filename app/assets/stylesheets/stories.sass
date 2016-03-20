@@ -1,5 +1,5 @@
 @import "compass"
-@import "_variables"
+@import "variables"
 
 .story,
 .featured_story
@@ -8,7 +8,7 @@
   position: relative
   .thumbnail
     position: relative
-    margin: 0 auto
+    margin: 0 auto 1em auto
     background: white
     border: solid 4px #dddddd
     max-width: none
@@ -39,8 +39,10 @@
     top: 65px
 .featured_story
   text-align: left
-  // height: 230px
   margin-bottom: 2em
+  @media screen and (min-width: 768px)
+    &:nth-child(2n+1)
+      clear: left
   h3
     margin-top: 0
     text-align: center
@@ -58,6 +60,10 @@
     text-align: center
     @media screen and (min-width: 768px)
       text-align: left
+
+.row.creators
+  h2
+    text-align: left
 
 .badge
   @include border-radius(1em)
@@ -102,3 +108,7 @@
   width: 100%
   color: #666666
   font-size: 14px
+  margin-bottom: 1em
+
+.rating-box
+  margin-bottom: 1em

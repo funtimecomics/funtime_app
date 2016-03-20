@@ -1,3 +1,8 @@
 .people
   %ul.people
     = render partial: "people/person", collection: people
+    - if link
+      %li.person.col-md-2.col-sm-3.col-xs-6
+        = link_to people_path do
+          %h3.subtitle
+            See All Artists

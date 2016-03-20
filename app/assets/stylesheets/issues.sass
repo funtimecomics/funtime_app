@@ -1,15 +1,15 @@
-@import "compass"
-@import "compass/css3"
-@import "_variables"
+@import 'compass'
+@import 'compass/css3'
+@import 'variables'
 
 .issue
   a
     display: block
   .issue-image
     @include border-radius(2px)
-    background: black
-    position: relative
+    background: $colour-black
     margin-bottom: 1em
+    position: relative
     z-index: 2
     img
       @include border-radius(2px)
@@ -19,33 +19,36 @@
       font-size: 1.25em
       right: -1em
       z-index: 30
-  .issue-image:before,
-  .issue-image:after
-    position: absolute
-    top: 0.5%
-    height: 99%
-    content: ' '
-    z-index: -1
-  .issue-image:before
-    @include border-radius(2px)
-    width: 100%
-    left: 2%
-    background-color: #cccccc
-  .issue-image:after
-    width: 1%
-    left: 100%
-    background-color: #ffffff
-    box-shadow: inset 0px 0px 5px #cccccc
+    &:before,
+    &:after
+      content: ' '
+      height: 99%
+      position: absolute
+      top: .5%
+      z-index: -1
+    &:before
+      @include border-radius(2px)
+      background-color: $colour-gray
+      left: 2%
+      width: 100%
+    &:after
+      background-color: $colour-white
+      box-shadow: inset 0 0 5px $colour-gray
+      left: 100%
+      width: 1%
 
-.most_recent_issue
-  @include border-radius(0.25em)
+.featured_issue
+  @include border-radius(.25em)
   background: black
   display: block
-  text-align: center
-  padding: 1em
+  float: left
   margin-bottom: 1em
+  padding: 1em
+  text-align: center
+  width: 100%
+  h2, h3
+    margin: 0
   h2
-    margin-top: 0
     a
       color: $colour-highlight
       &:visited

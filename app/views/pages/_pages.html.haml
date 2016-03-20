@@ -1,2 +1,11 @@
 %ol.pages
   = render partial: "pages/page", collection: pages
+.btn-group.btn-group-justified.carousel-controls
+  %a.btn.btn-default.carousel-first
+    %span.glyphicon.glyphicon-fast-backward
+  %a.btn.btn-default.carousel-prev
+    %span.glyphicon.glyphicon-step-backward
+  %a.btn.btn-default.carousel-next
+    %span.glyphicon.glyphicon-step-forward
+  %a.btn.btn-default.carousel-last
+    %span.glyphicon.glyphicon-fast-forward

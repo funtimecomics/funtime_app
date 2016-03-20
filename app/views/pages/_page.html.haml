@@ -1,5 +1,5 @@
 %li.page{class: ("active" if page_counter==0), "data-slide-to" => page_counter, "data-target" => "#carousel-pages"}
   %a
-    = image_tag page.image.url(:thumb)
+    = image_tag page.image.url(:thumb), class: 'img-responsive'
     .page-number
       = page.story_page_number

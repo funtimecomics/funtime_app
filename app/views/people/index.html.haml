@@ -1,11 +1,11 @@
 - content_for :title do
-  People
+  Artists
 
 %header
   .container
     .row
       .col-md-12
-        %h1 People
+        %h1 Artists
 .container
   .row
     .col-md-12
@@ -13,7 +13,7 @@
         = paginate @people
   .row
     .col-md-12
-      = render partial: "people/people", object: @people
+      = render partial: "people/people", object: @people, locals: {link: false}
   .row
     .col-md-12
       .pagination-wrapper

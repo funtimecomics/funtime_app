@@ -22,7 +22,7 @@
   .row
     .col-md-12
       - if @stories.any?
-        = render partial: "stories/stories", object: @stories, person: nil
+        = render partial: "stories/stories", object: @stories, locals: {person: nil, link: false}
       - else
         = "There are no stories like that."
   .row

@@ -1,0 +1,36 @@
+// $colour-background: #f3f0f1
+$colour-background: red
+$colour-black: #000000
+$colour-gray: #cccccc
+$colour-highlight: #e6e546
+$colour-link-active: #1e7944
+$colour-link-focus: #1e7944
+$colour-link-hover: #1e7944
+$colour-link-normal: #1e7944
+$colour-link-visited: #1e7944
+$colour-navbar: #231f20
+$colour-rating_blue: #9999ff
+$colour-rating_green: #99ff99
+$colour-rating_red: #ff9999
+$colour-rating_unrated: #eeeeff
+$colour-rating_yellow: #ffff99
+$colour-white: #ffffff
+$default-border-radius: 5px
+$breakpoint-sm: 768px
+$breakpoint-md: 992px
+$breakpoint-lg: 1200px
+
+
+@mixin browser-width-xs
+  // Unnecessary, but makes it easier to see which styles will be used on small screens
+  @media (min-width: 0)
+    @content
+@mixin browser-width-sm
+  @media (min-width: $breakpoint-sm)
+    @content
+@mixin browser-width-md
+  @media (min-width: $breakpoint-md)
+    @content
+@mixin browser-width-lg
+  @media (min-width: $breakpoint-lg)
+    @content

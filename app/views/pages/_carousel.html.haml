@@ -10,7 +10,8 @@
       - prev_page_id = i == 0 ? nil : pages[i-1].id
       - next_page_id = i == pages.size - 1 ? nil : pages[i+1].id
       .item{:class => ("active" if i==0 && !show_warning), "data-page-id" => page.id, "data-next-page-id" => next_page_id, "data-prev-page-id" => prev_page_id}
-        = "Page #{page.story_page_number} goes here"
+        .loading_message
+          = "Loading page #{page.story_page_number}&hellip;".html_safe
   %a.left.carousel-control{"data-slide" => "prev", :href => "#carousel-pages"}
     %span.icon-prev
   %a.right.carousel-control{"data-slide" => "next", :href => "#carousel-pages"}

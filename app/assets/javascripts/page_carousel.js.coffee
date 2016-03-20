@@ -49,6 +49,15 @@ class Carousel
         when 40 #down arrow
           $('#carousel-pages').carousel(@pageCount-1)
       return
+    $('.btn.carousel-first').on 'click', ->
+      $('#carousel-pages').carousel(0)
+    $('.btn.carousel-prev').on 'click', ->
+      $('#carousel-pages').carousel('prev')
+    $('.btn.carousel-next').on 'click', ->
+      $('#carousel-pages').carousel('next')
+    $('.btn.carousel-last').on 'click', ->
+      $('#carousel-pages').carousel(@pageCount-1)
+
 
   update: () ->
     currentPageId = @element.find('.item.active').data('page-id')

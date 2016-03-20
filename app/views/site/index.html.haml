@@ -1,28 +1,20 @@
 .section.stories
   .container
     .row
-      .col-md-2.col-sm-12
-        .subtitle
-          %h2 Stories
-          = link_to "See All Stories", stories_path
-      .col-md-10.col-sm-12
-        .row
-          .col-md-8
-            = render partial: "stories/featured_stories", object: @recent_stories, person: nil
-          .col-md-4.col-sm-12
-            = render partial: "issues/most_recent_issue", locals: { issue: @most_recent_issue }
-        .row
-          .col-md-12
-            = render partial: "stories/stories", object: @stories, person: nil
+      .col-md-8
+        %h2 Stories
+        = render partial: "stories/featured_stories", object: @recent_stories, person: nil
+      .col-md-4.col-sm-12
+        = render partial: "issues/featured_issue", locals: { issue: @most_recent_issue }
+    .row
+      .col-md-12
+        = render partial: "stories/stories", object: @stories, locals: {person: nil, link: true}
 
 .section.people
   .container
     .row
-      .col-md-2.col-sm-12
-        .subtitle
-          %h2 People
-          = link_to "See All People", people_path
-      .col-md-10.col-sm-12
-        = render partial: "people/people", object: @people
+      %h2 Artists
+      .col-sm-12
+        = render partial: "people/people", object: @people, locals: {link: true}
 
 = render partial: "site/footer"

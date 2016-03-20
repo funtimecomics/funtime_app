@@ -4,7 +4,7 @@
       = link_to featured_story do
         .thumbnail
           = image_tag featured_story.cover_image.url(:medium)
-        = badge(featured_story)      
+        = badge(featured_story)
     .col-md-6.col-sm-6.col-xs-12
       %h3
         = rating_dot(featured_story)
@@ -12,7 +12,9 @@
           = truncate(featured_story.name, length: 140)
       .creators
         = creator_list(featured_story.people)
-      - unless featured_story.description.blank?
+  - unless featured_story.description.blank?
+    .row
+      .col-xs-12
         .description
           = featured_story.description.html_safe
       

@@ -1,2 +1,7 @@
 %ul.stories
   = render partial: "stories/story", collection: stories, locals: {person: person ||= nil}
+  - if link
+    %li.story.col-md-2.col-sm-3.col-xs-6
+      = link_to stories_path do
+        %h3.subtitle
+          See All Stories
