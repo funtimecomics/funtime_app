@@ -1,11 +1,12 @@
-.featured_issue
-  .issue
-    = link_to issue do
-      .issue-image
-        = image_tag issue.cover_image.url(:thumb)
-        = badge(issue)
-    - if issue.purchase_url
-      %h2
-        = link_to "Issue #{issue.issue_number} Available Now!", issue.purchase_url
-      %h3
-        = link_to "Buy More Issues Online", "http://funtimecomics.bigcartel.com"
+- if issue.present?
+  .featured_issue
+    .issue
+      = link_to issue do
+        .issue-image
+          = image_tag issue.cover_image.url(:thumb)
+          = badge(issue)
+      - if issue.purchase_url
+        %h2
+          = link_to "Issue #{issue.issue_number} Available Now!", issue.purchase_url
+        %h3
+          = link_to "Buy More Issues Online", "http://funtimecomics.bigcartel.com"
