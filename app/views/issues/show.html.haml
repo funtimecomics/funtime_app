@@ -4,14 +4,14 @@
 %header
   .container
     .row
-      .col-md-9
+      .col-md-8
         %h1= @issue.title
-        - if @issue.description?
-          = @issue.description.html_safe
         .rating-box
           = rating_dot(@issue)
           = rating_info(@issue)
-      .col-md-3
+        - if @issue.description?
+          = @issue.description.html_safe
+      .col-md-4
         = render partial: "issues/featured_issue", locals: { issue: @issue }
 
 .section
@@ -21,5 +21,6 @@
         - if @issue.pages.any?
           = render partial: "pages/carousel", locals: {collection_name: "issue", show_warning: @issue.blue?, pages: @pages}
       .col-md-3
-        = render partial: "pages/pages", object: @pages
+        - if @issue.pages.any?
+          = render partial: "pages/pages", object: @pages
 = render partial: "site/footer"
