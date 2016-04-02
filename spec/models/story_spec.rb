@@ -78,6 +78,17 @@ describe Story do
       expect(@story.length_category).to eq :epic
     end
   end
+
+  describe "by_same_creators" do
+    it "includes stories by each creator" do
+      story = FactoryGirl.create(:story)
+      other_story = FactoryGirl.create(:story)
+      person = FactoryGirl.create(:person)
+      story.people << person
+      other_story.people << person
+      expect(story.by_same_creators).to include other_story
+    end
+  end
 end
 
 def add_pages(story, num_stories)

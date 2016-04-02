@@ -44,9 +44,9 @@ class Story < ActiveRecord::Base
     end
   end
 
-  def self.by_same_creators(story)
+  def by_same_creators
     related_stories = []
-    story.people.each do |person|
+    people.each do |person|
       related_stories << person.stories
     end
     related_stories.flatten.uniq

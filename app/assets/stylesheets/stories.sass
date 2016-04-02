@@ -2,7 +2,8 @@
 @import "variables"
 
 .story,
-.featured_story
+.featured_story,
+.all_stories
   float: left
   list-style: none
   position: relative
@@ -26,7 +27,8 @@
     @include box-shadow(#aaaaaa 8px 8px 0)
   a
     width: 100%
-.story
+.story,
+.all_stories
   text-align: center
   height: 130px
   margin-bottom: 4em
@@ -60,7 +62,9 @@
     text-align: center
     @media screen and (min-width: 768px)
       text-align: left
-
+.all_stories
+  h3
+    margin-top: 2em
 .row.creators
   h2
     text-align: left

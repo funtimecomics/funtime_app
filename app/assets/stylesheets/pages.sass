@@ -16,24 +16,24 @@
     position: relative
     width: 50px
     @include browser-width-xs
-      &:nth-child(6n+0)
+      &:nth-child(4n+0)
         margin-right: 0
-      &:nth-child(6n+1)
+      &:nth-child(4n+1)
         clear: left
     @include browser-width-sm
-      &:nth-child(6n+0)
+      &:nth-child(4n+0)
         margin-right: 1em
-      &:nth-child(6n+1)
+      &:nth-child(4n+1)
         clear: none
       &:nth-child(10n+0)
         margin-right: 0
       &:nth-child(10n+1)
         clear: left
     @include browser-width-md
-      &:nth-child(6n+0),
+      &:nth-child(4n+0),
       &:nth-child(10n+0)
         margin-right: 1em
-      &:nth-child(6n+1),
+      &:nth-child(4n+1),
       &:nth-child(10n+1)
         clear: none
       &:nth-child(2n+0)
@@ -41,11 +41,11 @@
       &:nth-child(2n+1)
         clear: left
     @include browser-width-lg
-      &:nth-child(6n+0),
+      &:nth-child(4n+0),
       &:nth-child(10n+0),
       &:nth-child(2n+0)
         margin-right: 1em
-      &:nth-child(6n+1),
+      &:nth-child(4n+1),
       &:nth-child(10n+1),
       &:nth-child(2n+1)
         clear: none

@@ -3,7 +3,7 @@ class Page < ActiveRecord::Base
   delegate :name, to: :story, prefix: true
 
   has_attached_file :image,
-                    styles: { original: '945>', medium: '300>', thumb: '70>' },
+                    styles: { original: '945>', medium: '150>', thumb: '70>' },
                     default_url: '/images/:style/missing.png'
   belongs_to :story, counter_cache: true, touch: true
   belongs_to :issue, counter_cache: true, touch: true

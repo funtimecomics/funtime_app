@@ -5,10 +5,6 @@
     %h4
       = rating_dot(story)
       = truncate(story.name, length: 30)
-    = badge(story)     
+    = badge(story)
   .creators
     = creator_list(story.people, person)
-  
-
-
-  
