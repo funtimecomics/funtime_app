@@ -8,7 +8,7 @@ gem "pg"
 gem "activeadmin", github: "gregbell/active_admin"
 gem "active_admin_editor", github: "boontdustie/active_admin_editor"
 gem "acts_as_list", github: "swanandp/acts_as_list"
-gem "aws-sdk" # , '~> 1.5.7'
+gem "aws-sdk", '< 2.0'
 gem "coffee-rails" # , '~> 3.2.1'
 gem "compass-rails"
 gem "devise"
