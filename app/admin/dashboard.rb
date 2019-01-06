@@ -1,5 +1,6 @@
-ActiveAdmin.register_page 'Dashboard' do
+# frozen_string_literal: true
 
+ActiveAdmin.register_page 'Dashboard' do
   menu priority: 1, label: proc { I18n.t('active_admin.dashboard') }
 
   content title: proc { I18n.t('active_admin.dashboard') } do
@@ -25,7 +26,7 @@ ActiveAdmin.register_page 'Dashboard' do
       column do
         panel t('admin.dashboard.things_to_do') do
           ul do
-            Person.alphabetical.select{|p| !p.image.exists?}.map do |person|
+            Person.alphabetical.reject { |p| p.image.exists? }.map do |person|
               li link_to(person.name, edit_admin_person_path(person)) + ' needs an image'
             end
           end

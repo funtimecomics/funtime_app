@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # Front-end controller for 404, 500 etc. errors
 class ErrorsController < ApplicationController
   def show

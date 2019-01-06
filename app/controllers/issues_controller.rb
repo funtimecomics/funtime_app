@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class IssuesController < InheritedResources::Base
   # GET /issues
   # GET /stories.json

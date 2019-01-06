@@ -1,4 +1,6 @@
-class AddIssueIdToPages < ActiveRecord::Migration
+# frozen_string_literal: true
+
+class AddIssueIdToPages < ActiveRecord::Migration[4.2]
   def change
     add_belongs_to :pages, :issue
   end

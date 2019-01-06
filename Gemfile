@@ -1,47 +1,53 @@
-source "https://rubygems.org"
-ruby "2.1.2"
+# frozen_string_literal: true
 
-gem "rails", "~> 4.1"
+source 'https://rubygems.org'
+ruby '2.5.3'
 
-gem "pg"
+gem 'rails', '~> 5.2'
 
-gem "activeadmin", github: "gregbell/active_admin"
-gem "active_admin_editor", github: "boontdustie/active_admin_editor"
-gem "acts_as_list", github: "swanandp/acts_as_list"
-gem "aws-sdk", '< 2.0'
-gem "coffee-rails" # , '~> 3.2.1'
-gem "compass-rails"
-gem "devise"
-gem "friendly_id"
-gem "haml-rails"
-gem "jquery-rails" # , '~> 2.3.0'
-gem "rails_12factor", group: :production
-gem "sass-rails"
-gem "uglifier" # , '>= 1.0.3'
-gem "paperclip" # , '~> 3.0'
-gem "kaminari"
-gem "font-awesome-rails"
+gem 'pg'
+
+gem 'active_admin_editor', github: 'ejholmes/active_admin_editor'
+gem 'activeadmin'
+gem 'acts_as_list'
+gem 'aws-sdk', '< 2.0'
+gem 'bootsnap'
+gem 'coffee-rails'
+gem 'compass-rails'
+gem 'devise'
+gem 'font-awesome-rails'
+gem 'friendly_id'
+gem 'haml-rails'
+gem 'jquery-rails'
+gem 'kaminari'
+gem 'listen'
+gem 'paperclip'
+gem 'rails_12factor', group: :production
+gem 'sass-rails'
+gem 'uglifier'
 
 group :development, :test do
-  gem "pry-rails"
-  gem "rspec-rails"
-  gem "factory_girl_rails", "~> 4.0"
+  gem 'factory_bot_rails'
+  gem 'pry-rails'
+  gem 'rspec-rails'
 end
 
 group :development do
-  gem "pry-remote"
-  gem "rails_best_practices"
-  gem "better_errors"
-  gem "traceroute"
-  gem "rack-mini-profiler"
-  gem "bullet"
-  gem "brakeman", require: false
-  gem "rubocop", require: false
-  gem "rubycritic", require: false
+  gem 'better_errors'
+  gem 'brakeman', require: false
+  gem 'bullet'
+  gem 'bumbler'
+  gem 'pry-remote'
+  gem 'rack-mini-profiler'
+  gem 'rails_best_practices'
+  gem 'rubocop', require: false
+  gem 'rubycritic', require: false
+  gem 'traceroute'
 end
 
 group :test do
-  gem "faker"
-  gem "simplecov", require: false
-  gem "database_cleaner"
+  gem 'database_cleaner'
+  gem 'faker'
+  gem 'rails-controller-testing'
+  gem 'simplecov', require: false
 end

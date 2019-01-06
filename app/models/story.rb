@@ -1,7 +1,9 @@
+# frozen_string_literal: true
+
 # A Story is a collection of pages, with one or more people as creators.
-class Story < ActiveRecord::Base
+class Story < ApplicationRecord
   extend FriendlyId
-  friendly_id :name, use: [:slugged, :history]
+  friendly_id :name, use: %i[slugged history]
   include Filterable
   include Rateable
 
@@ -28,8 +30,8 @@ class Story < ActiveRecord::Base
 
   def page_count
     page_count = pages.count
-    page_count += 1 if self.blue?
-    page_count += 1 if self.unfinished?
+    page_count += 1 if blue?
+    page_count += 1 if unfinished?
     page_count
   end
 
@@ -56,11 +58,10 @@ class Story < ActiveRecord::Base
     month_ago = 1.month.ago.utc
     if created_at > month_ago
       :new
-    elsif pages.last(2).all?{|page| page.created_at > month_ago}
+    elsif pages.last(2).all? { |page| page.created_at > month_ago }
       :new_pages
     elsif pages.last.created_at > month_ago
       :new_page
     end
   end
-
 end

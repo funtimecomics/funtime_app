@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # Front-end controller for stories
 class StoriesController < InheritedResources::Base
   # GET /stories

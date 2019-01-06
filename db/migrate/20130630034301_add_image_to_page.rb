@@ -1,4 +1,6 @@
-class AddImageToPage < ActiveRecord::Migration
+# frozen_string_literal: true
+
+class AddImageToPage < ActiveRecord::Migration[4.2]
   def self.up
     add_attachment :pages, :image
   end
