@@ -1,4 +1,4 @@
-class AddImageToPage < ActiveRecord::Migration
+class AddImageToPage < ActiveRecord::Migration[4.2]
   def self.up
     add_attachment :pages, :image
   end

@@ -1,4 +1,4 @@
-class AddPurchaseUrlToIssues < ActiveRecord::Migration
+class AddPurchaseUrlToIssues < ActiveRecord::Migration[4.2]
   def change
     add_column :issues, :purchase_url, :string
   end

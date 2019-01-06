@@ -1,4 +1,4 @@
-class AddRatingToStories < ActiveRecord::Migration
+class AddRatingToStories < ActiveRecord::Migration[4.2]
   def change
     add_column :stories, :rating, :integer
   end

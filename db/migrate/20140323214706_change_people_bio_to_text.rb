@@ -1,4 +1,4 @@
-class ChangePeopleBioToText < ActiveRecord::Migration
+class ChangePeopleBioToText < ActiveRecord::Migration[4.2]
 def up
     change_column :people, :bio, :text
 end

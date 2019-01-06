@@ -1,4 +1,4 @@
-class AddStoryIndexToPages < ActiveRecord::Migration
+class AddStoryIndexToPages < ActiveRecord::Migration[4.2]
   def change
     add_index :pages, :story_id
   end
