@@ -23,12 +23,12 @@ describe StoriesController, type: :controller do
   describe 'GET #show' do
     it 'assigns the requested story to @story' do
       story = FactoryBot.create(:story)
-      get :show, id: story.id
+      get :show, params: { id: story.id }
       expect(assigns(:story)).to eq(story)
     end
     it 'renders the :show view' do
       story = FactoryBot.create(:story)
-      get :show, id: story.id
+      get :show, params: { id: story.id }
       expect(response).to render_template :show
     end
   end

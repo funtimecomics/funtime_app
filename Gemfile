@@ -6,7 +6,7 @@ gem "rails", "~> 5.2"
 gem "pg"
 
 gem "activeadmin"
-gem "active_admin_editor"
+gem 'active_admin_editor', github: 'ejholmes/active_admin_editor'
 gem "acts_as_list"
 gem "aws-sdk", '< 2.0'
 gem "coffee-rails"
@@ -45,4 +45,5 @@ group :test do
   gem "faker"
   gem "simplecov", require: false
   gem "database_cleaner"
+  gem 'rails-controller-testing'
 end

@@ -16,12 +16,12 @@ describe PeopleController, type: :controller do
   describe 'GET #show' do
     it 'assigns the requested person to @person' do
       person = FactoryBot.create(:person)
-      get :show, id: person.id
+      get :show, params: { id: person.id }
       expect(assigns(:person)).to eq(person)
     end
     it 'renders the :show view' do
       person = FactoryBot.create(:person)
-      get :show, id: person.id
+      get :show, params: { id: person.id }
       expect(response).to render_template :show
     end
   end

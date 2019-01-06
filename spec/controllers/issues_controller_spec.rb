@@ -47,12 +47,12 @@ RSpec.describe IssuesController, type: :controller do
   describe "GET #show" do
     it "assigns the requested issue as @issue" do
       issue = Issue.create! valid_attributes
-      get :show, { id: issue.to_param }, valid_session
+      get :show, params: { id: issue.to_param }
       expect(assigns(:issue)).to eq(issue)
     end
     it 'renders the :show view' do
       issue = FactoryBot.create(:issue)
-      get :show, { id: issue.to_param }, valid_session
+      get :show, params: { id: issue.to_param }
       expect(response).to render_template :show
     end
   end
