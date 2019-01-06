@@ -3,39 +3,39 @@ require "spec_helper"
 
 describe Story do
   it "has a valid factory" do
-    story = FactoryGirl.create(:story)
+    story = FactoryBot.create(:story)
     expect(story).to be_valid
   end
   it "is invalid with a non-image MIME type" do
-    story = FactoryGirl.build(:story, cover_image_content_type: "audio/mp4")
+    story = FactoryBot.build(:story, cover_image_content_type: "audio/mp4")
     expect(story).not_to be_valid
   end
   it "is valid with a MIME type image/jpeg" do
-    story = FactoryGirl.build(:story, cover_image_content_type: "image/jpeg")
+    story = FactoryBot.build(:story, cover_image_content_type: "image/jpeg")
     expect(story).to be_valid
   end
   it "is valid with a MIME type image/jpg" do
-    story = FactoryGirl.build(:story, cover_image_content_type: "image/jpg")
+    story = FactoryBot.build(:story, cover_image_content_type: "image/jpg")
     expect(story).to be_valid
   end
   it "is invalid with an image that's too large" do
-    story = FactoryGirl.build(:story, cover_image_file_size: 10.megabytes)
+    story = FactoryBot.build(:story, cover_image_file_size: 10.megabytes)
     expect(story).not_to be_valid
   end
   it "is invalid without a name" do
-    story = FactoryGirl.build(:story, name: nil)
+    story = FactoryBot.build(:story, name: nil)
     expect(story).not_to be_valid
   end
   it "does not allow duplicate names" do
-    FactoryGirl.create(:story, name: "foo")
-    story = FactoryGirl.build(:story, name: "foo")
+    FactoryBot.create(:story, name: "foo")
+    story = FactoryBot.build(:story, name: "foo")
     expect(story).not_to be_valid
   end
 
   describe "#page_count" do
     before :each do
-      @story = FactoryGirl.create(:story)
-      FactoryGirl.create(:page, story: @story, story_page_number: 1)
+      @story = FactoryBot.create(:story)
+      FactoryBot.create(:page, story: @story, story_page_number: 1)
     end
     it "counts number of pages for a standard story" do
       expect(@story.page_count).to eq 1
@@ -52,7 +52,7 @@ describe Story do
 
   describe "#length_category" do
     before :each do
-      @story = FactoryGirl.create(:story)
+      @story = FactoryBot.create(:story)
     end
     it "is empty for a 0 page story" do
       expect(@story.length_category).to eq :empty
@@ -81,9 +81,9 @@ describe Story do
 
   describe "by_same_creators" do
     it "includes stories by each creator" do
-      story = FactoryGirl.create(:story)
-      other_story = FactoryGirl.create(:story)
-      person = FactoryGirl.create(:person)
+      story = FactoryBot.create(:story)
+      other_story = FactoryBot.create(:story)
+      person = FactoryBot.create(:person)
       story.people << person
       other_story.people << person
       expect(story.by_same_creators).to include other_story
@@ -93,6 +93,6 @@ end
 
 def add_pages(story, num_stories)
   (1..num_stories).each do |story_page_number|
-    FactoryGirl.create(:page, story: story, story_page_number: story_page_number)
+    FactoryBot.create(:page, story: story, story_page_number: story_page_number)
   end
 end

@@ -5,12 +5,12 @@ describe StoriesController, type: :controller do
   describe 'GET #index' do
     describe '@stories array' do
       it 'includes stories with pages' do
-        page = FactoryGirl.create(:page)
+        page = FactoryBot.create(:page)
         get :index
         expect(assigns(:stories)).to include(page.story)
       end
       it 'excludes stories with no pages' do
-        story = FactoryGirl.create(:story)
+        story = FactoryBot.create(:story)
         get :index
         expect(assigns(:stories)).not_to include(story)
       end
@@ -22,12 +22,12 @@ describe StoriesController, type: :controller do
   end
   describe 'GET #show' do
     it 'assigns the requested story to @story' do
-      story = FactoryGirl.create(:story)
+      story = FactoryBot.create(:story)
       get :show, id: story.id
       expect(assigns(:story)).to eq(story)
     end
     it 'renders the :show view' do
-      story = FactoryGirl.create(:story)
+      story = FactoryBot.create(:story)
       get :show, id: story.id
       expect(response).to render_template :show
     end

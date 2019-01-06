@@ -61,7 +61,7 @@ module FuntimeApp
         routing_specs: true,
         controller_specs: true,
         request_specs: true
-      g.fixture_replacement :factory_girl, dir: "spec/factories"
+      g.fixture_replacement :factory_bot, dir: "spec/factories"
     end
 
     # http://wearestac.com/blog/dynamic-error-pages-in-rails

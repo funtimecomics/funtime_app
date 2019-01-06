@@ -51,7 +51,7 @@ RSpec.describe IssuesController, type: :controller do
       expect(assigns(:issue)).to eq(issue)
     end
     it 'renders the :show view' do
-      issue = FactoryGirl.create(:issue)
+      issue = FactoryBot.create(:issue)
       get :show, { id: issue.to_param }, valid_session
       expect(response).to render_template :show
     end

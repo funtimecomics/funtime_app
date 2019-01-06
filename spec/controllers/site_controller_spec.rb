@@ -5,12 +5,12 @@ describe SiteController, type: :controller do
   describe 'GET #index' do
     describe '@recent_stories array' do
       it 'includes stories with pages' do
-        page = FactoryGirl.create(:page)
+        page = FactoryBot.create(:page)
         get :index
         expect(assigns(:recent_stories)).to include(page.story)
       end
       it 'excludes stories with no pages' do
-        story = FactoryGirl.create(:story)
+        story = FactoryBot.create(:story)
         get :index
         expect(assigns(:recent_stories)).not_to include(story)
       end
@@ -22,7 +22,7 @@ describe SiteController, type: :controller do
   end
   describe 'GET #index' do
     it 'populates an array of people' do
-      person = FactoryGirl.create(:person)
+      person = FactoryBot.create(:person)
       get :index
       expect(assigns(:people)).to eq([person])
     end

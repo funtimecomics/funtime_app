@@ -1,4 +1,4 @@
-FactoryGirl.define do
+FactoryBot.define do
   factory :story do
     name { Faker::Lorem.sentence }
     slug { Faker::Internet.slug }
