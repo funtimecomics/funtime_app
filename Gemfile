@@ -21,6 +21,7 @@ gem "sass-rails"
 gem "uglifier"
 gem "paperclip"
 gem "kaminari"
+gem 'listen'
 gem "font-awesome-rails"
 
 group :development, :test do
