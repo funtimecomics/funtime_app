@@ -1,5 +1,5 @@
 # A single comics page
-class Page < ActiveRecord::Base
+class Page <  ApplicationRecord
   delegate :name, to: :story, prefix: true
 
   has_attached_file :image,

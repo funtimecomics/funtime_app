@@ -1,5 +1,5 @@
 # A Story is a collection of pages, with one or more people as creators.
-class Story < ActiveRecord::Base
+class Story <  ApplicationRecord
   extend FriendlyId
   friendly_id :name, use: [:slugged, :history]
   include Filterable

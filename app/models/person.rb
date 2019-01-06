@@ -1,5 +1,5 @@
 # An author, artistor other creator
-class Person < ActiveRecord::Base
+class Person <  ApplicationRecord
   extend FriendlyId
   friendly_id :name, use: [:slugged, :history]
 

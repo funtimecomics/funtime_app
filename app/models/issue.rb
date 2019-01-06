@@ -1,5 +1,5 @@
 # A Funtime issue, showing how the stories were originally published.
-class Issue < ActiveRecord::Base
+class Issue <  ApplicationRecord
   extend FriendlyId
   friendly_id :title, use: [:slugged, :history]
 
