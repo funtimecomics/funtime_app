@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # spec/controllers/stories_controller_spec.rb
 require 'spec_helper'
 

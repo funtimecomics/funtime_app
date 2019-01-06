@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # Front-end controller for people
 class PeopleController < InheritedResources::Base
   # GET /people

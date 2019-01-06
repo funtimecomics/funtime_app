@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 ActiveAdmin.register Person do
   permit_params :bio, :image, :name
 

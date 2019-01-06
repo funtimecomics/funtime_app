@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # spec/models/contact.rb
 require 'spec_helper'
 

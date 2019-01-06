@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # Source: http://viget.com/extend/8-insanely-useful-activeadmin-customizations
 class FileInput < Formtastic::Inputs::FileInput
   def to_html

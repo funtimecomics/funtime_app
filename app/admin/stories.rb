@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 ActiveAdmin.register Story do
   permit_params :cover_image,
                 :cover_image_file_name,
@@ -10,7 +12,7 @@ ActiveAdmin.register Story do
                 :rating,
                 :unfinished,
                 :story_pages,
-                pages_attributes: [:id, :story_page_number, :story_id]
+                pages_attributes: %i[id story_page_number story_id]
 
   index do
     selectable_column
@@ -20,9 +22,7 @@ ActiveAdmin.register Story do
     column :cover_image do |story|
       image_tag(story.cover_image.url(:thumb))
     end
-    column :rating do |story|
-      story.rating
-    end
+    column :rating, &:rating
     column :people do |story|
       content_tag :ul do
         content_tag_for :li, story.people.alphabetical do |person|
@@ -42,7 +42,7 @@ ActiveAdmin.register Story do
     end
   end
 
-  form html: {multipart: true} do |f|
+  form html: { multipart: true } do |f|
     f.actions
     f.inputs t('admin.story.form_title'), class: 'inputs story' do
       f.semantic_errors(*f.object.errors.keys)
@@ -114,7 +114,7 @@ ActiveAdmin.register Story do
     def update
       @story = Story.friendly.find(params[:id])
       respond_to do |format|
-        if @story.update_attributes(permitted_params[:story])
+        if @story.update(permitted_params[:story])
           format.html do
             redirect_to admin_stories_url, notice: 'Story successfully updated.'
           end

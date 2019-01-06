@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # Front-end controller for home page
 class SiteController < InheritedResources::Base
   # GET /pages

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # API controller for pages
 class PagesController < InheritedResources::Base
   # GET /pages/1.json
@@ -5,7 +7,7 @@ class PagesController < InheritedResources::Base
     @page = Page.find(params[:id])
     respond_to do |format|
       format.json do
-        render json: @page.as_json(only: [:id, :image], methods: [:image_url])
+        render json: @page.as_json(only: %i[id image], methods: [:image_url])
       end
     end
   end

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # For classes that can be filtered through scopes
 module Filterable
   extend ActiveSupport::Concern

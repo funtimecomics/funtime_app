@@ -1,7 +1,9 @@
+# frozen_string_literal: true
+
 # An author, artistor other creator
-class Person <  ApplicationRecord
+class Person < ApplicationRecord
   extend FriendlyId
-  friendly_id :name, use: [:slugged, :history]
+  friendly_id :name, use: %i[slugged history]
 
   has_attached_file :image,
                     styles: { original: '300x300>', thumb: '100x100>' },

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 ActiveAdmin.register Issue do
   permit_params :cover_image,
                 :cover_image_file_name,
@@ -11,10 +13,10 @@ ActiveAdmin.register Issue do
                 :rating,
                 :title,
                 :issue_pages,
-                pages_attributes: [:id, :issue_page_number, :issue_id]
+                pages_attributes: %i[id issue_page_number issue_id]
 
-  config.sort_order = "position_asc"
-  
+  config.sort_order = 'position_asc'
+
   index do
     selectable_column
     column :issue do |issue|
@@ -36,7 +38,7 @@ ActiveAdmin.register Issue do
     end
   end
 
-  form html: {multipart: true} do |f|
+  form html: { multipart: true } do |f|
     f.actions
     f.inputs t('admin.issue.form_title'), class: 'inputs issue' do
       f.semantic_errors(*f.object.errors.keys)
@@ -98,7 +100,7 @@ ActiveAdmin.register Issue do
     def update
       @issue = Issue.friendly.find(params[:id])
       respond_to do |format|
-        if @issue.update_attributes(permitted_params[:issue])
+        if @issue.update(permitted_params[:issue])
           format.html do
             redirect_to admin_issues_url, notice: 'Issue successfully updated.'
           end
@@ -108,5 +110,4 @@ ActiveAdmin.register Issue do
       end
     end
   end
-
 end
