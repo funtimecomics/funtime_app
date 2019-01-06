@@ -1,31 +1,31 @@
 source "https://rubygems.org"
-ruby "2.1.2"
+ruby "2.5.3"
 
-gem "rails", "~> 4.1"
+gem "rails", "~> 5.2"
 
 gem "pg"
 
-gem "activeadmin", github: "gregbell/active_admin"
-gem "active_admin_editor", github: "boontdustie/active_admin_editor"
-gem "acts_as_list", github: "swanandp/acts_as_list"
+gem "activeadmin"
+gem "active_admin_editor"
+gem "acts_as_list"
 gem "aws-sdk", '< 2.0'
-gem "coffee-rails" # , '~> 3.2.1'
+gem "coffee-rails"
 gem "compass-rails"
 gem "devise"
 gem "friendly_id"
 gem "haml-rails"
-gem "jquery-rails" # , '~> 2.3.0'
+gem "jquery-rails"
 gem "rails_12factor", group: :production
 gem "sass-rails"
-gem "uglifier" # , '>= 1.0.3'
-gem "paperclip" # , '~> 3.0'
+gem "uglifier"
+gem "paperclip"
 gem "kaminari"
 gem "font-awesome-rails"
 
 group :development, :test do
   gem "pry-rails"
   gem "rspec-rails"
-  gem "factory_girl_rails", "~> 4.0"
+  gem "factory_bot_rails"
 end
 
 group :development do
@@ -38,6 +38,7 @@ group :development do
   gem "brakeman", require: false
   gem "rubocop", require: false
   gem "rubycritic", require: false
+  gem "bumbler"
 end
 
 group :test do
