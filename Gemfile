@@ -9,6 +9,7 @@ gem "activeadmin"
 gem 'active_admin_editor', github: 'ejholmes/active_admin_editor'
 gem "acts_as_list"
 gem "aws-sdk", '< 2.0'
+gem "bootsnap"
 gem "coffee-rails"
 gem "compass-rails"
 gem "devise"
